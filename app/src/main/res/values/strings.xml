@@ -9,7 +9,9 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <!-- related to register   -->
-    <string name="create_account"><font color="#00ff00">text</font></string>
+    <string name="create_account">Create Account</string>
     <string name="action_sign_up">Register</string>
-    <string name="back_to_login">Login</string>
+    <string name="back_to_login">I Wanna Login</string>
+    <string name="username">Username</string>
+    <string name="register">Register</string>
 </resources>
