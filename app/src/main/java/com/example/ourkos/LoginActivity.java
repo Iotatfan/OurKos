@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,7 +37,11 @@ public class LoginActivity extends AppCompatActivity {
 
 //                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 //                    startActivity(intent);
-                    finish();
+//                    finish();
+                    Toast.makeText(getApplicationContext(), "Coming Soon", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "I fuck up", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -64,34 +69,34 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public boolean validate() {
-        boolean valid;
 
-        String Email = editTextEmail.getText().toString();
-        String Password = editTextPassword.getText().toString();
+        String email = editTextEmail.getText().toString();
+        String password = editTextPassword.getText().toString();
 
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(Email).matches()) {
-            valid = false;
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+//            valid = false;
             textInputLayoutEmail.setError("Please enter valid email!");
+            return false;
         } else {
-            valid = true;
+//            valid = true;
             textInputLayoutEmail.setError(null);
-        }
-
-        //Handling validation for Password field
-        if (Password.isEmpty()) {
-            valid = false;
-            textInputLayoutPassword.setError("Please enter valid password!");
-        } else {
-            if (Password.length() > 5) {
-                valid = true;
-                textInputLayoutPassword.setError(null);
+            if (password.isEmpty()) {
+//                valid = false;
+                textInputLayoutPassword.setError("Please enter valid password!");
+                return false;
             } else {
-                valid = false;
-                textInputLayoutPassword.setError("Password is to short!");
+                if (password.length() > 5) {
+//                    valid = true;
+                    textInputLayoutPassword.setError(null);
+                    return true;
+                } else {
+//                    valid = false;
+                    textInputLayoutPassword.setError("Password is to short!");
+                    return false;
+                }
             }
         }
 
-        return valid;
     }
 
 }
