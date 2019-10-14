@@ -41,9 +41,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
                 app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@color/cardview_light_background"
+                app:passwordToggleTint="#FFFd"
                 app:errorEnabled="true"
-                android:textColorHint="@color/cardview_light_background">
+                android:textColorHint="#FFF">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextPassword"
@@ -51,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_password"
                     android:inputType="textPassword"
-                    android:textColorHint="@color/cardview_light_background">
+                    android:textColorHint="#FFF">
                 </com.google.android.material.textfield.TextInputEditText>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -63,8 +63,8 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
                 android:text="@string/action_sign_in"
-                android:background="@color/cardview_dark_background"
-                android:textColor="@color/cardview_light_background">
+                android:background="#222"
+                android:textColor="#FFF">
             </Button>
 
             <TextView
@@ -76,7 +76,7 @@
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
                 android:text="@string/create_account"
-                android:textColor="@color/cardview_light_background">
+                android:textColor="#FFF">
             </TextView>
 
         </LinearLayout>

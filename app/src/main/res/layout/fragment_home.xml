@@ -15,14 +15,19 @@
             android:id="@+id/cari"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/colorPrimary"
             android:iconifiedByDefault="false"
             android:orientation="horizontal"
             android:queryHint="Masukkan Nama Tempat"
-            android:textAlignment="viewStart" />
+            android:queryBackground="#FFF"
+            android:padding="10dp"
+            android:searchIcon="false"
+            />
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -35,56 +40,66 @@
                     android:text="Kota"
                     android:textColor="@android:color/black"
                     android:textSize="24sp" />
+
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:backgroundTint="@color/colorPrimaryDark"
-                            android:text="Jakarta"/>
 
                         <Button
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:backgroundTint="@color/colorPrimaryDark"
-                            android:text="Surabaya" />
+                            android:backgroundTint="@color/colorPrimary"
+                            android:text="Jakarta"
+                            android:textColor="#FFFF"/>
+
                         <Button
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:backgroundTint="@color/colorPrimaryDark"
                             android:layout_marginTop="10dp"
-                            android:text="Semarang"/>
+                            android:backgroundTint="@color/colorPrimary"
+                            android:text="Surabaya"
+                            android:textColor="#FFFF"/>
                         <Button
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:backgroundTint="@color/colorPrimaryDark"
+                            android:backgroundTint="@color/colorPrimary"
                             android:layout_marginTop="10dp"
-                            android:text="Yogyakarta"/>
+                            android:text="Semarang"
+                            android:textColor="#FFFF"/>
                         <Button
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:backgroundTint="@color/colorPrimaryDark"
+                            android:backgroundTint="@color/colorPrimary"
                             android:layout_marginTop="10dp"
-                            android:text="Bandung"/>
+                            android:text="Yogyakarta"
+                            android:textColor="#FFFF"/>
                         <Button
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:backgroundTint="@color/colorPrimaryDark"
+                            android:backgroundTint="@color/colorPrimary"
                             android:layout_marginTop="10dp"
-                            android:text="Solo"/>
+                            android:text="Bandung"
+                            android:textColor="#FFFF"/>
                         <Button
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:backgroundTint="@color/colorPrimaryDark"
+                            android:backgroundTint="@color/colorPrimary"
                             android:layout_marginTop="10dp"
-                            android:text="Malang"/>
+                            android:text="Surakarta"
+                            android:textColor="#FFFF"/>
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:layout_marginTop="10dp"
+                            android:text="Malang"
+                            android:textColor="#FFFF"/>
                     </LinearLayout>
                 </HorizontalScrollView>
             </LinearLayout>
