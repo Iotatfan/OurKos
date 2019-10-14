@@ -16,7 +16,7 @@
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.ourkos.ui.notifications.NotificationsFragment"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_settings"
+        android:name="com.example.ourkos.ui.settings.SettingsFragment"
+        tools:layout="@layout/fragment_settings" />
 </navigation>
