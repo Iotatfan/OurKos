@@ -14,13 +14,15 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.ourkos.LoginActivity;
+import com.example.ourkos.ProfileActivity;
 import com.example.ourkos.R;
 
 public class SettingsFragment extends Fragment {
 
     private SettingsViewModel settingsViewModel;
 
-    Button logoutBtn;
+    private Button logoutBtn;
+    private Button profileBtn;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class SettingsFragment extends Fragment {
         });
 
         initLogout(root);
+        iniProfile(root);
 
         return root;
     }
@@ -52,6 +55,18 @@ public class SettingsFragment extends Fragment {
                 Intent logout = new Intent(getActivity(), LoginActivity.class);
                 startActivity(logout);
 //                finish();
+            }
+        });
+    }
+
+    private void iniProfile(View rootView) {
+        profileBtn = rootView.findViewById(R.id.profileBtn);
+
+        profileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent profile = new Intent(getActivity(), ProfileActivity.class);
+                startActivity(profile);
             }
         });
     }
