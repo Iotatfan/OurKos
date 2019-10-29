@@ -16,22 +16,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:iconifiedByDefault="true"
+            android:iconifiedByDefault="false"
             android:orientation="horizontal"
             android:queryBackground="@color/colorPrimary"
             android:queryHint="Masukkan Nama Tempat" />
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <ListView
-                android:id="@+id/listview"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_below="@+id/cari"
-                android:visibility="invisible"/>
         </ScrollView>
+
+        <ListView
+            android:orientation="vertical"
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/cari"
+            android:visibility="visible" />
 
     </LinearLayout>
 <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
