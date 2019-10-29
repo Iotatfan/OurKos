@@ -5,16 +5,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#FFF"
+
     >
 
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        app:title="Profile"
-        app:titleTextColor="#FFF">
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/colorPrimary"-->
+<!--        app:title="Profile"-->
+<!--        app:titleTextColor="#FFF">-->
 
-    </androidx.appcompat.widget.Toolbar>
+<!--    </androidx.appcompat.widget.Toolbar>-->
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -163,7 +164,8 @@
                 app:rippleColor="@color/colorPrimary"
                 android:layout_margin="32dp"
                 android:layout_gravity="end|bottom"
-                app:fabSize="normal">
+                app:fabSize="normal"
+                android:clickable="true">
             </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
 

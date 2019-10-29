@@ -8,11 +8,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".ProfileActivity"
-            android:parentActivityName=".MainActivity">
-
-        </activity>
 
         <activity
             android:name=".LoginActivity"
@@ -36,6 +31,11 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".LoginActivity" />
+        </activity>
+        <activity
+            android:name=".ProfileActivity"
+            android:parentActivityName=".MainActivity"
+            android:label="Profile">
         </activity>
     </application>
 

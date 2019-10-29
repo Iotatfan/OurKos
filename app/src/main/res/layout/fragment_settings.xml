@@ -12,8 +12,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         app:title="Account"
-        app:titleTextColor="@color/cardview_light_background">
-
+        app:titleTextColor="#FFF">
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
