@@ -16,105 +16,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:iconifiedByDefault="false"
+            android:iconifiedByDefault="true"
             android:orientation="horizontal"
-            android:queryHint="Masukkan Nama Tempat"
-            android:queryBackground="@color/cardview_light_background"
-            android:padding="10dp"
-            />
+            android:queryBackground="@color/colorPrimary"
+            android:queryHint="Masukkan Nama Tempat" />
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Kota"
-                    android:textColor="@android:color/black"
-                    android:textSize="24sp" />
-
-                <HorizontalScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:backgroundTint="@color/colorPrimary"
-                            android:text="Jakarta"
-                            android:textColor="@color/cardview_light_background"/>
-
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:backgroundTint="@color/colorPrimary"
-                            android:text="Surabaya"
-                            android:textColor="@color/cardview_light_background"/>
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@color/colorPrimary"
-                            android:layout_marginTop="10dp"
-                            android:text="Semarang"
-                            android:textColor="@color/cardview_light_background"/>
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@color/colorPrimary"
-                            android:layout_marginTop="10dp"
-                            android:text="Yogyakarta"
-                            android:textColor="#FFFF"/>
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@color/colorPrimary"
-                            android:layout_marginTop="10dp"
-                            android:text="Bandung"
-                            android:textColor="@color/cardview_light_background"/>
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@color/colorPrimary"
-                            android:layout_marginTop="10dp"
-                            android:text="Surakarta"
-                            android:textColor="@color/cardview_light_background"/>
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@color/colorPrimary"
-                            android:layout_marginTop="10dp"
-                            android:text="Malang"
-                            android:textColor="@color/cardview_light_background"/>
-                    </LinearLayout>
-                </HorizontalScrollView>
-            </LinearLayout>
+            <ListView
+                android:id="@+id/listview"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/cari"
+                android:visibility="invisible"/>
         </ScrollView>
+
     </LinearLayout>
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:clickable="true"
-        android:focusable="true"
-        android:layout_marginBottom="60dp"
-        android:layout_marginRight="5dp"
-        android:gravity="bottom"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        app:srcCompat="@android:drawable/stat_sys_headset" />
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/floatingActionButton2"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:backgroundTint="@color/colorPrimaryDark"-->
+<!--        android:clickable="true"-->
+<!--        android:focusable="true"-->
+<!--        android:layout_marginBottom="60dp"-->
+<!--        android:layout_marginRight="5dp"-->
+<!--        android:gravity="bottom"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        app:srcCompat="@android:drawable/stat_sys_headset" />-->
 </RelativeLayout>
