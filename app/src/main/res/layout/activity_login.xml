@@ -72,7 +72,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
                 android:text="@string/action_sign_in"
-                android:background="#222"
+                android:background="@drawable/rounded_btn"
                 android:textColor="#FFF">
             </Button>
 
