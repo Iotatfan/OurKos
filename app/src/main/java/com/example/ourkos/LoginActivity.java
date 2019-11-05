@@ -5,19 +5,26 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText editTextEmail, editTextPassword;
-    TextInputLayout textInputLayoutEmail, textInputLayoutPassword;
-    Button  buttonLogin;
-
+    private EditText editTextEmail, editTextPassword;
+    private TextInputLayout textInputLayoutEmail, textInputLayoutPassword;
+    private Button  buttonLogin;
+    private FirebaseAuth auth;
+    private ProgressBar mProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,25 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         initCreateAccountTextView();
         initViews();
-
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(validate()) {
-                    String email = editTextEmail.getText().toString();
-                    String password = editTextPassword.getText().toString();
-
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
-//                    Toast.makeText(getApplicationContext(), "Coming Soon", Toast.LENGTH_LONG).show();
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), "I fuck up", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-        
+        login();
 
     }
 
@@ -56,6 +45,9 @@ public class LoginActivity extends AppCompatActivity {
         textInputLayoutEmail = findViewById(R.id.textInputLayoutEmail);
         textInputLayoutPassword = findViewById(R.id.textInputLayoutPassword);
         buttonLogin = findViewById(R.id.loginButton);
+        auth = FirebaseAuth.getInstance();
+
+        mProgress = findViewById(R.id.progressBar1);
     }
 
     private void initCreateAccountTextView() {
@@ -69,7 +61,46 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public boolean validate() {
+    private void login() {
+
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(validate()) {
+                    mProgress.setVisibility(View.VISIBLE);
+
+                    final String email = editTextEmail.getText().toString();
+                    final String password = editTextPassword.getText().toString();
+
+                    auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(LoginActivity.this,
+                            new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if(!task.isSuccessful()) {
+                                        mProgress.setVisibility(View.INVISIBLE);
+                                        Toast.makeText(LoginActivity.this, "Gagal Login bcoz" +
+                                                task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                    }
+                                    else {
+                                        Bundle bundle = new Bundle();
+                                        bundle.putString("email", email);
+                                        bundle.putString("password", password);
+                                        mProgress.setVisibility(View.INVISIBLE);
+                                        startActivity(new Intent(LoginActivity.this, MainActivity.class).putExtra("emailpassword", bundle));
+                                        finish();
+                                    }
+                                }
+                            });
+                }
+                else {
+                    mProgress.setVisibility(View.INVISIBLE);
+                    Toast.makeText(getApplicationContext(), ":(", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+    private boolean validate() {
 
         String email = editTextEmail.getText().toString();
         String password = editTextPassword.getText().toString();

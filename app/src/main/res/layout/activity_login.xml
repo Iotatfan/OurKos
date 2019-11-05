@@ -26,6 +26,8 @@
                 >
             </androidx.appcompat.widget.AppCompatImageView>
 
+
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayoutEmail"
                 android:layout_width="match_parent"
@@ -71,10 +73,15 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
-                android:text="@string/action_sign_in"
                 android:background="@drawable/rounded_btn"
-                android:textColor="#FFF">
-            </Button>
+                android:text="@string/action_sign_in"
+                android:textColor="#FFF"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"/>
 
             <TextView
                 android:id="@+id/textViewCreateAccount"

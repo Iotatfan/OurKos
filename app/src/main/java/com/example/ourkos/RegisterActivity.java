@@ -2,24 +2,28 @@ package com.example.ourkos;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText editTextEmail, etEditTextUsername, etEditTextPassword;
-    TextInputLayout tilEmail, tilUsername, tilPassword;
-    Button registerButton;
-    TextView backToLogin;
-    SqliteHelper sqliteHelper;
+    private EditText editTextEmail, etEditTextUsername, etEditTextPassword;
+    private TextInputLayout tilEmail, tilUsername, tilPassword;
+    private Button registerButton;
+    private TextView backToLogin;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,33 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         initViews();
         initTextViewLogin();
-
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(validate()) {
-                    String username = etEditTextUsername.getText().toString();
-                    String email = editTextEmail.getText().toString();
-                    String password = etEditTextPassword.getText().toString();
-
-                    if(!sqliteHelper.isEmailExisting(email)) {
-                        sqliteHelper.addUser(new User(null, username, email, password));
-                        Snackbar.make(registerButton, "User Creation Success",
-                                Snackbar.LENGTH_LONG).show();
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                finish();
-                            }
-                        }, Snackbar.LENGTH_LONG);
-                    }
-                    else {
-                        Snackbar.make(registerButton, "User Email Already Exist",
-                                Snackbar.LENGTH_LONG).show();
-                    }
-                }
-            }
-        });
+        registerUser();
     }
 
     private void initViews() {
@@ -68,6 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
         tilUsername = findViewById(R.id.textInputLayoutUsername);
         tilPassword = findViewById(R.id.textInputLayoutPassword);
         registerButton = findViewById(R.id.registerButton);
+        auth = FirebaseAuth.getInstance();
 
     }
 
@@ -85,7 +64,47 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private boolean validate() {
-        boolean valid = false;
+    private void registerUser(){
+
+            registerButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    String email = editTextEmail.getText().toString();
+                    String username = etEditTextUsername.getText().toString();
+                    String password = etEditTextPassword.getText().toString();
+
+                    if(email.isEmpty()) {
+                        editTextEmail.setError("Email Ga Bole Kosong");
+                    }
+                    else if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                        editTextEmail.setError("Invalid Email");
+                    }
+                    else if(password.isEmpty()) {
+                        etEditTextPassword.setError("Password Ga Bole Kosong");
+                    }
+                    else if(password.length() < 8) {
+                        etEditTextPassword.setError("Password too short");
+                    }
+                    else {
+                        auth.createUserWithEmailAndPassword(email, password)
+                                .addOnCompleteListener(RegisterActivity.this, new
+                                        OnCompleteListener<AuthResult>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                                if(!task.isSuccessful()){
+                                                    Snackbar.make(registerButton,
+                                                            "Failed to Register" + task.getException().getMessage(),
+                                                            Snackbar.LENGTH_LONG).show();
+                                                }
+                                                else {
+                                                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                                                }
+                                            }
+                                        });
+                    }
+
+                }
+            });
     }
 }

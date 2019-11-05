@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "996698036353",
+    "firebase_url": "https://ourkos-aceb8.firebaseio.com",
+    "project_id": "ourkos-aceb8",
+    "storage_bucket": "ourkos-aceb8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:996698036353:android:a50ebac81e872cf0f51580",
+        "android_client_info": {
+          "package_name": "com.example.ourkos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "996698036353-3mlnnljrgc7jcg3hrjbvh0ca6k46buvd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvZbOboBlRmkvpW5obEtR36P8DS1Ycb2Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "996698036353-3mlnnljrgc7jcg3hrjbvh0ca6k46buvd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
