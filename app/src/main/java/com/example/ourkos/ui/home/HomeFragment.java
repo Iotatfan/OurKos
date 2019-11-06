@@ -1,6 +1,7 @@
 package com.example.ourkos.ui.home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,13 +14,14 @@ import android.widget.RelativeLayout;
 import android.widget.SearchView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.ourkos.R;
+import com.example.ourkos.SearchListActivity;
 
 import java.util.ArrayList;
 
@@ -86,6 +88,9 @@ public class HomeFragment extends Fragment {
             public boolean onQueryTextSubmit(String query) {
                 if(list.contains(query)){
                     adapter.getFilter().filter(query);
+                    Intent intent = new Intent(getActivity().getApplicationContext(), SearchListActivity.class);
+                    intent.putExtra("place",query);
+                    startActivity(intent);
 //                    searchView.clearFocus();
                 }else{
                     Toast.makeText(getActivity().getApplicationContext(), "No Match found",Toast.LENGTH_LONG).show();
@@ -104,7 +109,8 @@ public class HomeFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String selected = (String)adapterView.getItemAtPosition(i);
                 searchView.setQuery(selected,true);
-//                Intent intent = new Intent(HomeFragment.this,)
+//                Intent intent = new Intent(getActivity().getApplicationContext(), SearchListActivity.class);
+//                startActivity(intent);
             }
         });
         homeViewModel.getText().observe(this, new Observer<String>() {

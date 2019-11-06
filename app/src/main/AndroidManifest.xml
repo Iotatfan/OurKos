@@ -37,6 +37,9 @@
             android:parentActivityName=".MainActivity"
             android:label="Profile">
         </activity>
+        <activity android:name=".SearchListActivity"
+            android:parentActivityName=".MainActivity">
+        </activity>
     </application>
 
 </manifest>

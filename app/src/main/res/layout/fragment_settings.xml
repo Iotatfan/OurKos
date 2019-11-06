@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/bg_color"
-        app:title="Account"
+        app:title="Akun"
         app:titleTextColor="@color/pureWhite">
     </androidx.appcompat.widget.Toolbar>
 
@@ -29,10 +29,11 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="40dp"
                     android:layout_height="match_parent"
                     android:contentDescription="profileIcon"
-                    android:src="@drawable/baseline_account_circle_black_18dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/baseline_account_circle_black_24dp"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"/>
 
@@ -41,10 +42,41 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/pureWhite"
-                    android:text="Profile"
+                    android:text="Data Diri"
                     android:gravity="center_vertical"
                     style="@style/Widget.AppCompat.Button.Borderless">
                 </Button>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/shadow">
+            </View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:contentDescription="profileIcon"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/baseline_vpn_key_black_24"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"/>
+
+                <Button
+                    android:id="@+id/passBtn"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/pureWhite"
+                    android:gravity="center_vertical"
+                    android:text="Ubah Password"/>
 
             </LinearLayout>
 
@@ -91,7 +123,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="40dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
@@ -102,7 +134,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/pureWhite"
-                    android:text="Notification"
+                    android:text="@string/title_notifications"
                     android:gravity="center_vertical"
                     style="@style/Widget.AppCompat.Button.Borderless">
                 </Button>
@@ -121,7 +153,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="40dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
@@ -181,7 +213,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/pureWhite"
-                android:text="Logout"
+                android:text="Keluar"
                 android:gravity="left"
                 style="@style/Widget.AppCompat.Button.Borderless">
             </Button>
