@@ -5,17 +5,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#FFF"
-
     >
 
-<!--    <androidx.appcompat.widget.Toolbar-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@color/colorPrimary"-->
-<!--        app:title="Profile"-->
-<!--        app:titleTextColor="#FFF">-->
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_color"
+        app:title="Profile"
+        app:titleTextColor="#FFF">
 
-<!--    </androidx.appcompat.widget.Toolbar>-->
+    </androidx.appcompat.widget.Toolbar>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -62,7 +61,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:errorEnabled="true"
-                        android:textColorHint="@color/cardview_dark_background">
+                        android:textColorHint="#000">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/editTextUsername"
@@ -97,7 +96,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:errorEnabled="true"
-                        android:textColorHint="@color/cardview_dark_background">
+                        android:textColorHint="#000">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/editTextEmail"
@@ -132,7 +131,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:errorEnabled="true"
-                        android:textColorHint="@color/cardview_dark_background">
+                        android:textColorHint="#000">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/editTextPhone"
@@ -160,8 +159,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_check_white_24dp"
-                android:backgroundTint="@color/colorPrimaryDark"
-                app:rippleColor="@color/colorPrimary"
+                android:backgroundTint="@color/bg_color_dark"
+                app:rippleColor="@color/bg_color"
                 android:layout_margin="32dp"
                 android:layout_gravity="end|bottom"
                 app:fabSize="normal"
@@ -173,7 +172,6 @@
 
 
     </RelativeLayout>
-
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

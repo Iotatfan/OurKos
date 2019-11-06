@@ -8,9 +8,9 @@
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="@color/bg_color"
         app:title="Messages"
-        app:titleTextColor="#FFF">
+        app:titleTextColor="#FFFFFF">
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
@@ -23,15 +23,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="">
-
-<!--            <TextView-->
-<!--                android:id="@+id/textView2"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:gravity="center"-->
-<!--                android:text="Tidak ada pesan untuk saat ini"-->
-<!--                android:textColor="@android:color/black"-->
-<!--                android:textSize="24sp" />-->
 
             <LinearLayout
                 android:layout_width="match_parent"

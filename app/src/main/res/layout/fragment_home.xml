@@ -15,10 +15,10 @@
             android:id="@+id/cari"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
+            android:background="@color/bg_color"
             android:iconifiedByDefault="false"
             android:orientation="horizontal"
-            android:queryBackground="@color/colorPrimary"
+            android:queryBackground="@color/bg_color"
             android:queryHint="Masukkan Nama Tempat" />
 
         <ScrollView
@@ -33,6 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/cari"
+            android:numColumns="3"
             android:visibility="visible" />
 
     </LinearLayout>
