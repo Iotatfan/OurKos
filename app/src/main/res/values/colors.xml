@@ -4,7 +4,8 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="bg_color">#44A122</color>
-    <color name="bg_color_dark">#115512</color>
-    <color name="pureBlack">#000000</color>
-    <color name="pureWhite">#FFFFFF</color>
+    <color name="bg_color_dark">#FF115512</color>
+    <color name="pureBlack">#EE000000</color>
+    <color name="pureWhite">#FFFFFFFF</color>
+    <color name="shadow">#AA667766</color>
 </resources>

@@ -4,20 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFF">
+    android:background="@color/pureWhite">
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/bg_color"
         app:title="Account"
-        app:titleTextColor="#FFF">
+        app:titleTextColor="@color/pureWhite">
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="12dp">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,7 +40,7 @@
                     android:id="@+id/profileBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#FFF"
+                    android:backgroundTint="@color/pureWhite"
                     android:text="Profile"
                     android:gravity="center_vertical"
                     style="@style/Widget.AppCompat.Button.Borderless">
@@ -51,8 +50,8 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#888">
+                android:layout_height="2dp"
+                android:background="@color/shadow">
             </View>
 
 <!--            <LinearLayout-->
@@ -102,7 +101,7 @@
                     android:id="@+id/notificationBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#FFF"
+                    android:backgroundTint="@color/pureWhite"
                     android:text="Notification"
                     android:gravity="center_vertical"
                     style="@style/Widget.AppCompat.Button.Borderless">
@@ -112,8 +111,8 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#888">
+                android:layout_height="2dp"
+                android:background="@color/shadow">
             </View>
 
             <LinearLayout
@@ -133,7 +132,7 @@
                     android:id="@+id/helpBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#FFF"
+                    android:backgroundTint="@color/pureWhite"
                     android:gravity="center_vertical"
                     android:text="Help"
                     style="@style/Widget.AppCompat.Button.Borderless"/>
@@ -142,8 +141,8 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#888">
+                android:layout_height="2dp"
+                android:background="@color/shadow">
             </View>
 
 <!--            <LinearLayout-->
@@ -181,7 +180,7 @@
                 android:id="@+id/logoutBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FFF"
+                android:backgroundTint="@color/pureWhite"
                 android:text="Logout"
                 android:gravity="left"
                 style="@style/Widget.AppCompat.Button.Borderless">

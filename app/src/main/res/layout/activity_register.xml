@@ -32,13 +32,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             app:errorEnabled="true"
-            android:textColorHint="#FFF">
+            android:textColorHint="@color/pureWhite">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/username"
+                android:textSize="16dp"
                 android:inputType="textPersonName">
             </com.google.android.material.textfield.TextInputEditText>
 
@@ -49,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
-            android:textColorHint="#FFF"
+            android:textColorHint="@color/pureWhite"
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -57,6 +58,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/prompt_email"
+                android:textSize="16dp"
+                android:textColorHint="@color/pureWhite"
                 android:inputType="textEmailAddress">
             </com.google.android.material.textfield.TextInputEditText>
 
@@ -68,8 +71,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             app:passwordToggleEnabled="true"
-            app:passwordToggleTint="#FFF"
-            android:textColorHint="#FFF"
+            app:passwordToggleTint="@color/pureWhite"
+            android:textColorHint="@color/pureWhite"
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -77,9 +80,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/prompt_password"
+                android:textSize="16dp"
                 android:inputType="textPassword"
-                android:textColorHint="#FFF">
-            </com.google.android.material.textfield.TextInputEditText>
+                android:textColorHint="@color/pureWhite"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -90,8 +94,11 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:text="@string/register"
-            android:background="@drawable/rounded_btn"
-            android:textColor="#FFF" >
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:background="@drawable/ripple_button"
+            android:textColor="@color/pureWhite"
+            android:clickable="true">
         </Button>
 
         <TextView
@@ -103,7 +110,10 @@
             android:layout_marginBottom="16dp"
             android:gravity="center"
             android:text="@string/back_to_login"
-            android:textColor="#FFF" >
+            android:textColor="@color/pureWhite"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:clickable="true">
         </TextView>
 
     </LinearLayout>
