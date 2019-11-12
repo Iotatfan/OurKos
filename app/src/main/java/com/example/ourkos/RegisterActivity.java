@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,7 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
     private TextInputLayout tilEmail, tilUsername, tilPassword;
     private Button registerButton;
     private MaterialBetterSpinner spinnerGender, spinnerAccess;
-    private TextView backToLogin;
+//    private TextView backToLogin;
     private FirebaseAuth auth;
     private DatabaseReference database;
 
