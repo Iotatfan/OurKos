@@ -56,12 +56,6 @@
                         android:textColor="@color/pureBlack">
                     </androidx.appcompat.widget.AppCompatTextView>
 
-<!--                    <com.google.android.material.textfield.TextInputLayout-->
-<!--                        android:id="@+id/textInputLayoutUsername"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        app:errorEnabled="true"-->
-<!--                        android:textColorHint="@color/pureBlack">-->
 
                         <EditText
                             android:id="@+id/editTextUsername"
@@ -74,7 +68,6 @@
                             android:inputType="textEmailAddress">
                         </EditText>
 
-<!--                    </com.google.android.material.textfield.TextInputLayout>-->
 
                 </LinearLayout>
 
@@ -150,15 +143,6 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp">
-
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -174,7 +158,7 @@
                         android:layout_height="wrap_content"
                         app:errorEnabled="true"
                         android:textColorHint="@color/pureBlack"
-                        android:layout_margin="10dp">
+                        android:layout_marginBottom="10dp">
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/editTextPhone"
@@ -197,9 +181,28 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:gravity="top">
+
+            <ProgressBar
+                android:id="@+id/progressBar1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:indeterminate="true"
+                android:visibility="invisible"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
             android:gravity="bottom">
 
+
             <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnYes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/baseline_check_white_24"
