@@ -52,11 +52,45 @@ public class SettingsFragment extends Fragment {
 //                textView.setText(s);
             }
         });
+
+        initView(root);
         initLogout(root);
+        initChangePassword(root);
         initProfile(root);
-        iniPemilik(root);
+        iniPemilik();
 
         return root;
+    }
+
+    private void initView(View root) {
+        pemilikBtn = root.findViewById(R.id.pemilikBtn);
+        imagePemilik = root.findViewById(R.id.imagepemilik);
+        vPemilk = root.findViewById(R.id.vpemilik);
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        database= FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
+        database.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                type = dataSnapshot.child("type").getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getActivity().getApplicationContext(), databaseError.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+        if(type!="Pemilik Kos"){
+            pemilikBtn.setVisibility(View.GONE);
+            imagePemilik.setVisibility(View.GONE);
+            vPemilk.setVisibility(View.GONE);
+        }
+        else {
+            pemilikBtn.setVisibility(View.VISIBLE);
+            imagePemilik.setVisibility(View.VISIBLE);
+            vPemilk.setVisibility(View.VISIBLE);
+        }
     }
 
     private void initLogout(View rootView) {
@@ -83,32 +117,20 @@ public class SettingsFragment extends Fragment {
             }
         });
     }
-    private void iniPemilik(View rootView){
-        pemilikBtn=rootView.findViewById(R.id.pemilikBtn);
-        imagePemilik=rootView.findViewById(R.id.imagepemilik);
-        vPemilk=rootView.findViewById(R.id.vpemilik);
-        auth=FirebaseAuth.getInstance();
-        user=auth.getCurrentUser();
-        database= FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
-        database.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                type = dataSnapshot.child("type").getValue().toString();
-            }
 
+    private void initChangePassword(View root) {
+
+        changePwButton = root.findViewById(R.id.passBtn);
+        changePwButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getActivity().getApplicationContext(), databaseError.getMessage(), Toast.LENGTH_LONG).show();
+            public void onClick(View v) {
+                Intent changePw = new Intent(getActivity(), ChangePassword.class);
+                startActivity(changePw);
             }
         });
-        if(type!="Pemilik Kos"){
-            pemilikBtn.setVisibility(View.INVISIBLE);
-            imagePemilik.setVisibility(View.INVISIBLE);
-            vPemilk.setVisibility(View.INVISIBLE);
-        }
-        pemilikBtn.setVisibility(View.VISIBLE);
-        imagePemilik.setVisibility(View.VISIBLE);
-        vPemilk.setVisibility(View.VISIBLE);
+    }
+
+    private void iniPemilik(){
         pemilikBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
