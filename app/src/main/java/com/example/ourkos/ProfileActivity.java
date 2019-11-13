@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,6 +30,7 @@ public class ProfileActivity extends AppCompatActivity {
     private EditText editTextUsername;
     private AppCompatTextView appCompatTextViewJK, appCompatTextViewEmail, appCompatTextViewPhone;
     private FloatingActionButton yes;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,24 +39,36 @@ public class ProfileActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         initView();
+        backButton();
+        progressBar.setVisibility(View.VISIBLE);
+        getUserData();
         progressBar.setVisibility(View.INVISIBLE);
         updateButton();
     }
 
     private void initView(){
-
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
-
         editTextUsername = findViewById(R.id.editTextUsername);
         appCompatTextViewEmail = findViewById(R.id.editTextEmail);
         appCompatTextViewJK = findViewById(R.id.editTextGender);
         appCompatTextViewPhone = findViewById(R.id.editTextPhone);
         progressBar = findViewById(R.id.progressBar1);
         yes = findViewById(R.id.btnYes);
+        toolbar = findViewById(R.id.toolbar);
+    }
 
-        progressBar.setVisibility(View.VISIBLE);
+    private void backButton(){
+        toolbar.setNavigationIcon(R.drawable.baseline_arrow_back_white_24);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
 
+    private void getUserData(){
         appCompatTextViewEmail.setText(user.getEmail());
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
@@ -103,5 +117,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
 }

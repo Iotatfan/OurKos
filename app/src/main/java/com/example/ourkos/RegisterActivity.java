@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -123,6 +122,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
+
     private void writeToDB(FirebaseUser users, String username, String gender, String phone,String type){
         User user = new User(users.getEmail(),username, gender, phone,type);
         database.child("users").child(users.getUid()).setValue(user);

@@ -53,25 +53,9 @@ public class HomeFragment extends Fragment {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         root = inflater.inflate(R.layout.fragment_home, container, false);
-        searchView = root.findViewById(R.id.cari);
-//        searchView.setIconified(true);
-        searchView.setSubmitButtonEnabled(false);
-        listView = root.findViewById(R.id.list);
 
-        listView.setVisibility(root.GONE);
+        initView(root);
 
-        list = new ArrayList<>();
-        list.add("Bandung");
-        list.add("Jakarta");
-        list.add("Malang");
-        list.add("Semarang");
-        list.add("Surabaya");
-        list.add("Solo");
-        list.add("Yogyakarta");
-        adapter = new ArrayAdapter<>(getActivity().getApplicationContext(),android.R.layout.simple_list_item_1,list);
-        adapter.getCount();
-        listView.setAdapter(adapter);
-        listView.getLayoutParams().height=getHeighesttview(getActivity().getApplicationContext(),adapter)*5;
         searchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener(){
             @Override
             public void onFocusChange(View v, boolean hasFocus){
@@ -120,5 +104,28 @@ public class HomeFragment extends Fragment {
             }
         });
         return root;
+    }
+
+    private void initView(View root) {
+
+        searchView = root.findViewById(R.id.cari);
+        searchView.setSubmitButtonEnabled(false);
+        listView = root.findViewById(R.id.list);
+
+        listView.setVisibility(root.GONE);
+
+        list = new ArrayList<>();
+        list.add("Bandung");
+        list.add("Jakarta");
+        list.add("Malang");
+        list.add("Semarang");
+        list.add("Surabaya");
+        list.add("Solo");
+        list.add("Yogyakarta");
+        adapter = new ArrayAdapter<>(getActivity().getApplicationContext(),android.R.layout.simple_list_item_1,list);
+        adapter.getCount();
+        listView.setAdapter(adapter);
+        listView.getLayoutParams().height=getHeighesttview(getActivity().getApplicationContext(),adapter)*5;
+
     }
 }

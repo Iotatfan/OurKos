@@ -54,15 +54,6 @@ public class SettingsFragment extends Fragment {
         });
 
         initView(root);
-
-        if(type!="Pemilik Kos"){
-            pemilikBtn.setVisibility(View.INVISIBLE);
-            imagePemilik.setVisibility(View.INVISIBLE);
-            vPemilk.setVisibility(View.INVISIBLE);
-        }
-        pemilikBtn.setVisibility(View.VISIBLE);
-        imagePemilik.setVisibility(View.VISIBLE);
-        vPemilk.setVisibility(View.VISIBLE);
         initLogout(root);
         initChangePassword(root);
         initProfile(root);
@@ -72,11 +63,11 @@ public class SettingsFragment extends Fragment {
     }
 
     private void initView(View root) {
-        pemilikBtn=root.findViewById(R.id.pemilikBtn);
-        imagePemilik=root.findViewById(R.id.imagepemilik);
-        vPemilk=root.findViewById(R.id.vpemilik);
-        auth=FirebaseAuth.getInstance();
-        user=auth.getCurrentUser();
+        pemilikBtn = root.findViewById(R.id.pemilikBtn);
+        imagePemilik = root.findViewById(R.id.imagepemilik);
+        vPemilk = root.findViewById(R.id.vpemilik);
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
         database= FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
         database.addValueEventListener(new ValueEventListener() {
             @Override
@@ -89,8 +80,18 @@ public class SettingsFragment extends Fragment {
                 Toast.makeText(getActivity().getApplicationContext(), databaseError.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-    }
 
+        if(type!="Pemilik Kos"){
+            pemilikBtn.setVisibility(View.GONE);
+            imagePemilik.setVisibility(View.GONE);
+            vPemilk.setVisibility(View.GONE);
+        }
+        else {
+            pemilikBtn.setVisibility(View.VISIBLE);
+            imagePemilik.setVisibility(View.VISIBLE);
+            vPemilk.setVisibility(View.VISIBLE);
+        }
+    }
 
     private void initLogout(View rootView) {
         logoutBtn = rootView.findViewById(R.id.logoutBtn);
@@ -121,7 +122,6 @@ public class SettingsFragment extends Fragment {
     private void initChangePassword(View root) {
 
         changePwButton = root.findViewById(R.id.passBtn);
-
         changePwButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

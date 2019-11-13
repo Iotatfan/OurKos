@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,6 +23,7 @@ public class ChangePassword extends AppCompatActivity {
     private Button btn;
     private FirebaseAuth auth;
     private FirebaseUser user;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class ChangePassword extends AppCompatActivity {
         getSupportActionBar().hide();
 
         initView();
+        backButton();
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,7 +44,6 @@ public class ChangePassword extends AppCompatActivity {
     }
 
     private void initView() {
-
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         btn = findViewById(R.id.gantiBtn);
@@ -49,6 +51,17 @@ public class ChangePassword extends AppCompatActivity {
         editTextConfirm = findViewById(R.id.editTextConfirm);
         tilBaru  = findViewById(R.id.tilBaru);
         tilConfrim = findViewById(R.id.tilConfirm);
+        toolbar = findViewById(R.id.toolbar);
+    }
+
+    private void backButton(){
+        toolbar.setNavigationIcon(R.drawable.baseline_arrow_back_white_24);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void changePassword(){
@@ -65,11 +78,15 @@ public class ChangePassword extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()) {
                         Toast.makeText(ChangePassword.this,"Password Berhasil Diubah", Toast.LENGTH_LONG ).show();
+                        finish();
+
+                    }
+                    else {
+                        Toast.makeText(ChangePassword.this,"Untuk Suatu Alasan Password Gagal Diubah", Toast.LENGTH_LONG ).show();
                     }
                 }
             });
         }
-
     }
 
     private boolean validate(String baru, String confirm){
