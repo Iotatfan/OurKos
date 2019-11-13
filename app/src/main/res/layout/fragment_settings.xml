@@ -26,7 +26,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:clickable="true">
 
                 <ImageView
                     android:layout_width="40dp"
@@ -172,6 +173,40 @@
             </LinearLayout>
 
             <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/shadow">
+                android:layout_height="2dp"
+                android:background="@color/shadow">
+            </View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imagepemilik"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:src="@drawable/baseline_lock_black_18dp">
+                </ImageView>
+
+                <Button
+                    android:id="@+id/pemilikBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/pureWhite"
+                    android:gravity="center_vertical"
+                    android:text="Pemilik Kos"
+                    style="@style/Widget.AppCompat.Button.Borderless"/>
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/vpemilik"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="@color/shadow">

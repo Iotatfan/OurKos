@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +24,7 @@ import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText editTextEmail, etEditTextUsername, etEditTextPassword;
+    private EditText editTextEmail, etEditTextUsername, etEditTextPassword, editTextPhones, editTextConfirm;
     private TextInputLayout tilEmail, tilUsername, tilPassword;
     private Button registerButton;
     private MaterialBetterSpinner spinnerGender, spinnerAccess;
@@ -56,7 +57,9 @@ public class RegisterActivity extends AppCompatActivity {
 
         editTextEmail = findViewById(R.id.editTextEmail);
         etEditTextUsername = findViewById(R.id.editTextUsername);
+        editTextPhones = findViewById(R.id.editTextPhone);
         etEditTextPassword = findViewById(R.id.editTextPassword);
+        editTextConfirm = findViewById(R.id.editTextConfirm);
         tilEmail = findViewById(R.id.textInputLayoutEmail);
         tilUsername = findViewById(R.id.textInputLayoutUsername);
         tilPassword = findViewById(R.id.textInputLayoutPassword);
@@ -68,35 +71,24 @@ public class RegisterActivity extends AppCompatActivity {
         spinnerGender.setAdapter(adapterGender);
     }
 
-//    private void initTextViewLogin() {
-//
-//        backToLogin = findViewById(R.id.textViewBackLogin);
-//
-//        backToLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
-//    }
-
     private void registerUser(){
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String email = editTextEmail.getText().toString();
                 final String username = etEditTextUsername.getText().toString();
                 String password = etEditTextPassword.getText().toString();
+                String confirm = editTextConfirm.getText().toString();
+                final String gender = spinnerGender.getText().toString();
+                final String type = spinnerAccess.getText().toString();
+                final String phone = editTextPhones.getText().toString();
 
                 if(email.isEmpty()) {
                     editTextEmail.setError("Email Ga Bole Kosong");
                 }
                 else if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-                    editTextEmail.setError("Invalid Email");
+                    editTextEmail.setError("Email tidak valid");
                 }
                 else if(password.isEmpty()) {
                     etEditTextPassword.setError("Password Ga Bole Kosong");
@@ -107,30 +99,33 @@ public class RegisterActivity extends AppCompatActivity {
                 else if(username.isEmpty()){
                     etEditTextUsername.setError("Username Ga Bole Kosong");
                 }
+                else if(!password.equals(confirm)) {
+                    etEditTextPassword.setError("Password dan konfirmasi tidak sama");
+                    editTextConfirm.setError("Konfirmasi Password tidak sama");
+                }
                 else {
                     auth.createUserWithEmailAndPassword(email, password)
-                            .addOnCompleteListener(RegisterActivity.this, new
-                                    OnCompleteListener<AuthResult>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<AuthResult> task) {
-                                            if(!task.isSuccessful()){
-                                                Snackbar.make(registerButton,
-                                                        "Failed to Register" + task.getException().getMessage(),
-                                                        Snackbar.LENGTH_LONG).show();
-                                            }
-                                            else {
-                                                writeToDB(task.getResult().getUser(),username);
-                                                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                                            }
-                                        }
-                                    });
+                        .addOnCompleteListener(RegisterActivity.this, new
+                        OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(!task.isSuccessful()){
+                                Snackbar.make(registerButton,
+                                        "Failed to Register " + task.getException().getMessage(),
+                                        Snackbar.LENGTH_LONG).show();
+                            }
+                            else {
+                                writeToDB(task.getResult().getUser(),username, gender, phone, type);
+                                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                            }
+                        }
+                    });
                 }
-
             }
         });
     }
-    private void writeToDB(FirebaseUser usera, String username){
-        User user = new User(usera.getEmail(),username);
-        database.child("users").child(usera.getUid()).setValue(user);
+    private void writeToDB(FirebaseUser users, String username, String gender, String phone,String type){
+        User user = new User(users.getEmail(),username, gender, phone,type);
+        database.child("users").child(users.getUid()).setValue(user);
     }
 }
