@@ -24,8 +24,10 @@ public class SearchListActivity extends AppCompatActivity {
         List<Kost> listKost=new ArrayList<Kost>();
 
         Kost kost;
-        kost = new Kost(R.drawable.contoh,"Kosku","Jl. Keputih Utara Gg Mawar A 19",5);
-        listKost.add(kost);
-        listView.setAdapter(new KostAdapter(this,R.layout.list_item_search,listKost));
+        kost=new Kost(R.drawable.contoh,"Kosku","Jl. Keputih Utara Gg Mawar A 19",5,500000,"Surabaya","Putra");
+        if(name.equals(kost.getRegion())){
+            listKost.add(kost);
+            listView.setAdapter(new KostAdapter(this,R.layout.list_item_search,listKost));
+        }
     }
 }

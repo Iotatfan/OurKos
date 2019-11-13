@@ -46,7 +46,16 @@
             android:name=".ChangePassword"
             android:label="Ubah Password"
             android:parentActivityName=".MainActivity"></activity>
-        <activity android:name=".ChatRoom" />
+        <activity 
+            android:name=".ChatRoom" 
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity
+            android:name=".SearchListActivity"
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity android:name=".FirebaseDBCreateKostActivity"
+            android:parentActivityName=".MainActivity">
     </application>
 
 </manifest>

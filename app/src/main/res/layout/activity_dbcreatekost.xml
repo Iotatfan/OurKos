@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/bg_color"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:textAlignment="center"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="20dp"
+            android:text="Tambah Kos" />
+
+        <EditText
+            android:id="@+id/etnama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama Kos"
+            android:textColorHint="@color/cardview_light_background"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/etalamat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Alamat Kos"
+            android:textColorHint="@color/cardview_light_background"
+            android:inputType="text" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="2">
+
+            <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                android:id="@+id/material_spinner3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Jenis Kos"
+                android:textColor="@color/pureWhite"
+                android:textColorHint="@color/pureWhite"
+                app:met_textColorHint="@color/pureWhite"
+                app:met_floatingLabel="normal"
+                android:gravity="left"
+                android:layout_marginRight="5dp"
+                />
+
+            <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                android:id="@+id/material_spinner4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Region"
+                android:textColor="@color/pureWhite"
+                android:textColorHint="@color/pureWhite"
+                app:met_textColorHint="@color/pureWhite"
+                app:met_floatingLabel="normal"
+                android:gravity="left"
+                android:layout_marginLeft="5dp"
+                />
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_lanjut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Selanjutnya" />
+
+    </LinearLayout>
+</ScrollView>

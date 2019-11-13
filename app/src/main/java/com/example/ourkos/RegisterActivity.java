@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -74,12 +75,12 @@ public class RegisterActivity extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String email = editTextEmail.getText().toString();
                 final String username = etEditTextUsername.getText().toString();
                 String password = etEditTextPassword.getText().toString();
                 String confirm = editTextConfirm.getText().toString();
                 final String gender = spinnerGender.getText().toString();
+                final String type = spinnerAccess.getText().toString();
                 final String phone = editTextPhones.getText().toString();
 
                 if(email.isEmpty()) {
@@ -103,28 +104,27 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 else {
                     auth.createUserWithEmailAndPassword(email, password)
-                            .addOnCompleteListener(RegisterActivity.this, new
-                                    OnCompleteListener<AuthResult>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<AuthResult> task) {
-                                            if(!task.isSuccessful()){
-                                                Snackbar.make(registerButton,
-                                                        "Failed to Register " + task.getException().getMessage(),
-                                                        Snackbar.LENGTH_LONG).show();
-                                            }
-                                            else {
-                                                writeToDB(task.getResult().getUser(),username, gender, phone);
-                                                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                                            }
-                                        }
-                                    });
+                        .addOnCompleteListener(RegisterActivity.this, new
+                        OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(!task.isSuccessful()){
+                                Snackbar.make(registerButton,
+                                        "Failed to Register " + task.getException().getMessage(),
+                                        Snackbar.LENGTH_LONG).show();
+                            }
+                            else {
+                                writeToDB(task.getResult().getUser(),username, gender, phone, type);
+                                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                            }
+                        }
+                    });
                 }
-
             }
         });
     }
-    private void writeToDB(FirebaseUser users, String username, String gender, String phone){
-        User user = new User(users.getEmail(),username, gender, phone);
+    private void writeToDB(FirebaseUser users, String username, String gender, String phone,String type){
+        User user = new User(users.getEmail(),username, gender, phone,type);
         database.child("users").child(users.getUid()).setValue(user);
     }
 }
