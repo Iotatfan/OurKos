@@ -32,8 +32,7 @@
             android:parentActivityName=".LoginActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".LoginActivity" />
-        </activity>
+                android:value=".LoginActivity" /></activity>
         <activity
             android:name=".ProfileActivity"
             android:label="Profile"
@@ -41,21 +40,15 @@
         <activity
             android:name=".SearchListActivity"
             android:parentActivityName=".MainActivity" />
-
         <activity
             android:name=".ChangePassword"
             android:label="Ubah Password"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity"/>
         <activity 
             android:name=".ChatRoom" 
-            android:parentActivityName=".MainActivity">
-        </activity>
-        <activity
-            android:name=".SearchListActivity"
-            android:parentActivityName=".MainActivity">
-        </activity>
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".FirebaseDBCreateKostActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"/>
     </application>
 
 </manifest>

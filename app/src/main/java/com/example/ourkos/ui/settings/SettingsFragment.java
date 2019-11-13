@@ -18,7 +18,6 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.ourkos.ChangePassword;
 import com.example.ourkos.FirebaseDBCreateKostActivity;
 import com.example.ourkos.LoginActivity;
-import com.example.ourkos.MainActivity;
 import com.example.ourkos.ProfileActivity;
 import com.example.ourkos.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,7 +33,6 @@ public class SettingsFragment extends Fragment {
     private SettingsViewModel settingsViewModel;
 
     private Button logoutBtn, profileBtn, changePwButton, notifButton, helpButton;
-    private Button profileBtn;
     private Button pemilikBtn;
     private FirebaseAuth auth;
     private FirebaseUser user;
@@ -54,6 +52,26 @@ public class SettingsFragment extends Fragment {
 //                textView.setText(s);
             }
         });
+
+        initView(root);
+
+        if(type!="Pemilik Kos"){
+            pemilikBtn.setVisibility(View.INVISIBLE);
+            imagePemilik.setVisibility(View.INVISIBLE);
+            vPemilk.setVisibility(View.INVISIBLE);
+        }
+        pemilikBtn.setVisibility(View.VISIBLE);
+        imagePemilik.setVisibility(View.VISIBLE);
+        vPemilk.setVisibility(View.VISIBLE);
+        initLogout(root);
+        initChangePassword(root);
+        initProfile(root);
+        iniPemilik();
+
+        return root;
+    }
+
+    private void initView(View root) {
         pemilikBtn=root.findViewById(R.id.pemilikBtn);
         imagePemilik=root.findViewById(R.id.imagepemilik);
         vPemilk=root.findViewById(R.id.vpemilik);
@@ -71,20 +89,6 @@ public class SettingsFragment extends Fragment {
                 Toast.makeText(getActivity().getApplicationContext(), databaseError.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-        if(type!="Pemilik Kos"){
-            pemilikBtn.setVisibility(View.INVISIBLE);
-            imagePemilik.setVisibility(View.INVISIBLE);
-            vPemilk.setVisibility(View.INVISIBLE);
-        }
-        pemilikBtn.setVisibility(View.VISIBLE);
-        imagePemilik.setVisibility(View.VISIBLE);
-        vPemilk.setVisibility(View.VISIBLE);
-        initLogout(root);
-        initChangePassword(root);
-        iniProfile(root);
-        iniPemilik();
-
-        return root;
     }
 
 
