@@ -48,8 +48,7 @@
             android:name=".ChatRoom" 
             android:parentActivityName=".MainActivity"/>
         <activity android:name=".FirebaseDBCreateKostActivity"
-            android:parentActivityName=".MainActivity">
-        </activity>
+            android:parentActivityName=".MainActivity"/>
     </application>
 
 </manifest>
