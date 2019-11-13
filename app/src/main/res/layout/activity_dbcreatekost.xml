@@ -1,85 +1,269 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/bg_color"
-    android:fitsSystemWindows="true">
+    android:orientation="vertical"
+    android:background="@color/pureWhite"
+    >
 
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="18dp"
-        android:layout_marginRight="18dp"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:textAlignment="center"
-            android:textColor="@color/cardview_light_background"
-            android:textSize="20dp"
-            android:text="Tambah Kos" />
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/bg_color"
+        app:title="Tambah Kos"
+        app:titleTextColor="@color/pureWhite">
 
-        <EditText
-            android:id="@+id/etnama"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nama Kos"
-            android:textColorHint="@color/cardview_light_background"
-            android:inputType="text" />
+    </androidx.appcompat.widget.Toolbar>
 
-        <EditText
-            android:id="@+id/etalamat"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Alamat Kos"
-            android:textColorHint="@color/cardview_light_background"
-            android:inputType="text" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_weight="2">
+            android:layout_height="match_parent"
+            android:paddingTop="12dp">
 
-            <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
-                android:id="@+id/material_spinner3"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Jenis Kos"
-                android:textColor="@color/pureWhite"
-                android:textColorHint="@color/pureWhite"
-                app:met_textColorHint="@color/pureWhite"
-                app:met_floatingLabel="normal"
-                android:gravity="left"
-                android:layout_marginRight="5dp"
-                />
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:orientation="vertical">
+                <EditText
+                    android:id="@+id/etnama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nama Kos"
+                    android:textColorHint="@color/pureBlack"
+                    android:inputType="text" />
 
-            <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
-                android:id="@+id/material_spinner4"
-                android:layout_width="0dp"
+                <EditText
+                    android:id="@+id/etalamat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Alamat Kos"
+                    android:textColorHint="@color/pureBlack"
+                    android:inputType="text" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="2">
+
+                    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                        android:id="@+id/material_spinner3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Jenis Kos"
+                        android:textColor="@color/pureBlack"
+                        android:textColorHint="@color/pureBlack"
+                        app:met_textColorHint="@color/pureBlack"
+                        app:met_floatingLabel="normal"
+                        android:gravity="left"
+                        android:layout_marginRight="5dp"
+                        />
+
+                    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                        android:id="@+id/material_spinner4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Region"
+                        android:textColor="@color/pureBlack"
+                        android:textColorHint="@color/pureBlack"
+                        app:met_textColorHint="@color/pureBlack"
+                        app:met_floatingLabel="normal"
+                        android:gravity="left"
+                        android:layout_marginLeft="5dp"
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Region"
-                android:textColor="@color/pureWhite"
-                android:textColorHint="@color/pureWhite"
-                app:met_textColorHint="@color/pureWhite"
-                app:met_floatingLabel="normal"
-                android:gravity="left"
+                android:layout_weight="2"
                 android:layout_marginLeft="5dp"
-                />
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
 
-        </LinearLayout>
-        <Button
-            android:id="@+id/btn_lanjut"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Selanjutnya" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/pureBlack"
+                        android:textStyle="bold"
+                        android:gravity="left"
+                        android:textSize="20dp"
+                        android:text="Foto Cover"/>
 
-    </LinearLayout>
-</ScrollView>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:textColor="@color/pureBlack"
+                        android:textStyle="normal"
+                        android:gravity="bottom"
+                        android:textSize="10dp"
+                        android:text="Tambah 1 foto sebagai kesan pertama kos"/>
+
+                </LinearLayout>
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:text="Tambah Foto"
+                    android:gravity="center"
+                    android:background="@drawable/custom_button"
+                    android:textColor="@color/bg_color"
+                    android:layout_weight="1" />
+            </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/pureBlack"
+                            android:textStyle="bold"
+                            android:gravity="left"
+                            android:textSize="20dp"
+                            android:text="Foto Bangunan"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:textColor="@color/pureBlack"
+                            android:textStyle="normal"
+                            android:gravity="bottom"
+                            android:textSize="10dp"
+                            android:text="Tambah beberapa foto yang mewakili bangunan kos"/>
+
+                    </LinearLayout>
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="90dp"
+                        android:text="Tambah Foto"
+                        android:gravity="center"
+                        android:background="@drawable/custom_button"
+                        android:textColor="@color/bg_color"
+                        android:layout_weight="1" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/pureBlack"
+                            android:textStyle="bold"
+                            android:gravity="left"
+                            android:textSize="20dp"
+                            android:text="Foto Kamar"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:textColor="@color/pureBlack"
+                            android:textStyle="normal"
+                            android:gravity="bottom"
+                            android:textSize="10dp"
+                            android:text="Tambah beberapa foto yang mewakili kamar kos"/>
+
+                    </LinearLayout>
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="90dp"
+                        android:text="Tambah Foto"
+                        android:gravity="center"
+                        android:background="@drawable/custom_button"
+                        android:textColor="@color/bg_color"
+                        android:layout_weight="1" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/pureBlack"
+                            android:textStyle="bold"
+                            android:gravity="left"
+                            android:textSize="20dp"
+                            android:text="Foto Kamar Mandi"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:textColor="@color/pureBlack"
+                            android:textStyle="normal"
+                            android:gravity="bottom"
+                            android:textSize="10dp"
+                            android:text="Tambah beberapa foto yang mewakili kamar mandi kos"/>
+
+                    </LinearLayout>
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="90dp"
+                        android:text="Tambah Foto"
+                        android:gravity="center"
+                        android:background="@drawable/custom_button"
+                        android:textColor="@color/bg_color"
+                        android:layout_weight="1" />
+                </LinearLayout>
+                <Button
+                    android:id="@+id/btn_lanjut"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_rounded"
+                    android:textColor="@color/pureWhite"
+                    android:text="Selanjutnya" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

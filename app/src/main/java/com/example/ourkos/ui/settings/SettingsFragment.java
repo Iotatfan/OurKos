@@ -15,9 +15,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.ourkos.ChangePassword;
 import com.example.ourkos.FirebaseDBCreateKostActivity;
 import com.example.ourkos.LoginActivity;
-import com.example.ourkos.MainActivity;
 import com.example.ourkos.ProfileActivity;
 import com.example.ourkos.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,8 +32,7 @@ public class SettingsFragment extends Fragment {
 
     private SettingsViewModel settingsViewModel;
 
-    private Button logoutBtn;
-    private Button profileBtn;
+    private Button logoutBtn, profileBtn, changePwButton, notifButton, helpButton;
     private Button pemilikBtn;
     private FirebaseAuth auth;
     private FirebaseUser user;
@@ -45,19 +44,49 @@ public class SettingsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        settingsViewModel =
-                ViewModelProviders.of(this).get(SettingsViewModel.class);
+        settingsViewModel = ViewModelProviders.of(this).get(SettingsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_settings, container, false);
-//        final TextView textView = root.findViewById(R.id.text_notifications);
         settingsViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
 //                textView.setText(s);
             }
         });
-        pemilikBtn=root.findViewById(R.id.pemilikBtn);
-        imagePemilik=root.findViewById(R.id.imagepemilik);
-        vPemilk=root.findViewById(R.id.vpemilik);
+        initLogout(root);
+        initProfile(root);
+        iniPemilik(root);
+
+        return root;
+    }
+
+    private void initLogout(View rootView) {
+        logoutBtn = rootView.findViewById(R.id.logoutBtn);
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent logout = new Intent(getActivity(), LoginActivity.class);
+                auth.getInstance().signOut();
+                startActivity(logout);
+
+            }
+        });
+    }
+
+    private void initProfile(View rootView) {
+        profileBtn = rootView.findViewById(R.id.profileBtn);
+        profileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent profile = new Intent(getActivity(), ProfileActivity.class);
+                startActivity(profile);
+            }
+        });
+    }
+    private void iniPemilik(View rootView){
+        pemilikBtn=rootView.findViewById(R.id.pemilikBtn);
+        imagePemilik=rootView.findViewById(R.id.imagepemilik);
+        vPemilk=rootView.findViewById(R.id.vpemilik);
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
         database= FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
@@ -80,40 +109,6 @@ public class SettingsFragment extends Fragment {
         pemilikBtn.setVisibility(View.VISIBLE);
         imagePemilik.setVisibility(View.VISIBLE);
         vPemilk.setVisibility(View.VISIBLE);
-        initLogout(root);
-        iniProfile(root);
-        iniPemilik();
-
-        return root;
-    }
-
-
-    private void initLogout(View rootView) {
-        logoutBtn = rootView.findViewById(R.id.logoutBtn);
-        logoutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent logout = new Intent(getActivity(), LoginActivity.class);
-                auth.getInstance().signOut();
-                startActivity(logout);
-
-            }
-        });
-    }
-
-    private void iniProfile(View rootView) {
-        profileBtn = rootView.findViewById(R.id.profileBtn);
-
-        profileBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent profile = new Intent(getActivity(), ProfileActivity.class);
-                startActivity(profile);
-            }
-        });
-    }
-    private void iniPemilik(){
         pemilikBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
