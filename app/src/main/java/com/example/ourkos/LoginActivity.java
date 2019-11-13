@@ -86,15 +86,15 @@ public class LoginActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if(!task.isSuccessful()) {
                                         mProgress.setVisibility(View.INVISIBLE);
-                                        Toast.makeText(LoginActivity.this, "Gagal Login bcoz" +
+                                        Toast.makeText(LoginActivity.this, "Login Failed \n " +
                                                 task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                     }
                                     else {
                                         Bundle bundle = new Bundle();
                                         bundle.putString("email", email);
                                         bundle.putString("password", password);
-                                        mProgress.setVisibility(View.INVISIBLE);
                                         startActivity(new Intent(LoginActivity.this, MainActivity.class).putExtra("emailpassword", bundle));
+                                        mProgress.setVisibility(View.INVISIBLE);
                                         finish();
                                     }
                                 }
@@ -102,7 +102,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else {
                     mProgress.setVisibility(View.INVISIBLE);
-                    Toast.makeText(getApplicationContext(), ":(", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Email Atau Password Salah ", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -114,29 +114,26 @@ public class LoginActivity extends AppCompatActivity {
         String password = editTextPassword.getText().toString();
 
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-//            valid = false;
-            textInputLayoutEmail.setError("Please enter valid email!");
+            textInputLayoutEmail.setError("Email Ga Valid");
             return false;
-        } else {
-//            valid = true;
+        }
+        else {
             textInputLayoutEmail.setError(null);
             if (password.isEmpty()) {
-//                valid = false;
-                textInputLayoutPassword.setError("Please enter valid password!");
+                textInputLayoutPassword.setError("Password Ga Kosong!");
                 return false;
-            } else {
+            }
+            else {
                 if (password.length() > 5) {
-//                    valid = true;
                     textInputLayoutPassword.setError(null);
                     return true;
-                } else {
-//                    valid = false;
-                    textInputLayoutPassword.setError("Password is to short!");
+                }
+                else {
+                    textInputLayoutPassword.setError("Password Minimal 8 Karakter!");
                     return false;
                 }
             }
         }
 
     }
-
 }

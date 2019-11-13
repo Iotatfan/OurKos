@@ -10,11 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ChatRoom"></activity>
+
         <activity
             android:name=".LoginActivity"
             android:label="@string/app_name">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,10 +37,16 @@
         <activity
             android:name=".ProfileActivity"
             android:label="Profile"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".SearchListActivity"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".ChangePassword"
+            android:label="Ubah Password"
             android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".ChatRoom" />
     </application>
 
 </manifest>

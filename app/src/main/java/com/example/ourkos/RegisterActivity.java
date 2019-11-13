@@ -24,10 +24,9 @@ import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText editTextEmail, etEditTextUsername, etEditTextPassword, editTextPhones, editTextConfirm;
-    private TextInputLayout tilEmail, tilUsername, tilPassword;
+    private TextInputLayout tilEmail, tilUsername, tilPassword, tilConfirm;
     private Button registerButton;
     private MaterialBetterSpinner spinnerGender, spinnerAccess;
-//    private TextView backToLogin;
     private FirebaseAuth auth;
     private DatabaseReference database;
 
@@ -39,7 +38,6 @@ public class RegisterActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         initViews();
-//        initTextViewLogin();
         registerUser();
     }
 
@@ -62,6 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
         tilEmail = findViewById(R.id.textInputLayoutEmail);
         tilUsername = findViewById(R.id.textInputLayoutUsername);
         tilPassword = findViewById(R.id.textInputLayoutPassword);
+        tilConfirm = findViewById(R.id.textInputLayoutConfirm);
         registerButton = findViewById(R.id.registerButton);
         auth = FirebaseAuth.getInstance();
         database=FirebaseDatabase.getInstance().getReference();
@@ -84,23 +83,23 @@ public class RegisterActivity extends AppCompatActivity {
                 final String phone = editTextPhones.getText().toString();
 
                 if(email.isEmpty()) {
-                    editTextEmail.setError("Email Ga Bole Kosong");
+                    tilEmail.setError("Email Ga Bole Kosong");
                 }
                 else if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-                    editTextEmail.setError("Email tidak valid");
+                    tilEmail.setError("Email Ga Valid");
                 }
                 else if(password.isEmpty()) {
-                    etEditTextPassword.setError("Password Ga Bole Kosong");
+                    tilPassword.setError("Password Ga Bole Kosong");
                 }
                 else if(password.length() < 8) {
-                    etEditTextPassword.setError("Password too short");
+                    tilPassword.setError("Password Kependekan");
                 }
                 else if(username.isEmpty()){
-                    etEditTextUsername.setError("Username Ga Bole Kosong");
+                    tilUsername.setError("Username Ga Bole Kosong");
                 }
                 else if(!password.equals(confirm)) {
-                    etEditTextPassword.setError("Password dan konfirmasi tidak sama");
-                    editTextConfirm.setError("Konfirmasi Password tidak sama");
+                    tilPassword.setError("Cek Lagi Password Na");
+                    tilConfirm.setError("Cek Lagi Password Na");
                 }
                 else {
                     auth.createUserWithEmailAndPassword(email, password)

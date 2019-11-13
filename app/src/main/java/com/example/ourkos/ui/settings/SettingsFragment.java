@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.ourkos.ChangePassword;
 import com.example.ourkos.LoginActivity;
 import com.example.ourkos.ProfileActivity;
 import com.example.ourkos.R;
@@ -22,17 +23,14 @@ public class SettingsFragment extends Fragment {
 
     private SettingsViewModel settingsViewModel;
 
-    private Button logoutBtn;
-    private Button profileBtn;
+    private Button logoutBtn, profileBtn, changePwButton, notifButton, helpButton;
     private FirebaseAuth auth;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        settingsViewModel =
-                ViewModelProviders.of(this).get(SettingsViewModel.class);
+        settingsViewModel = ViewModelProviders.of(this).get(SettingsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_settings, container, false);
-//        final TextView textView = root.findViewById(R.id.text_notifications);
         settingsViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -41,7 +39,9 @@ public class SettingsFragment extends Fragment {
         });
 
         initLogout(root);
-        iniProfile(root);
+        initProfile(root);
+        initChangePassword(root);
+
 
         return root;
     }
@@ -63,7 +63,7 @@ public class SettingsFragment extends Fragment {
         });
     }
 
-    private void iniProfile(View rootView) {
+    private void initProfile(View rootView) {
         profileBtn = rootView.findViewById(R.id.profileBtn);
 
         profileBtn.setOnClickListener(new View.OnClickListener() {
@@ -73,5 +73,19 @@ public class SettingsFragment extends Fragment {
                 startActivity(profile);
             }
         });
+    }
+
+    private void initChangePassword(View root) {
+
+        changePwButton = root.findViewById(R.id.passBtn);
+
+        changePwButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent changePw = new Intent(getActivity(), ChangePassword.class);
+                startActivity(changePw);
+            }
+        });
+
     }
 }
