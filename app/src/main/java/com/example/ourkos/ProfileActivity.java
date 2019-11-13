@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 public class ProfileActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
-    private  ProgressBar progressBar;
+    private ProgressBar progressBar;
     private FirebaseAuth auth;
     private FirebaseUser user;
     private EditText editTextUsername;
@@ -36,7 +36,9 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         getSupportActionBar().hide();
 
+
         initView();
+        progressBar.setVisibility(View.INVISIBLE);
         updateButton();
     }
 
@@ -52,11 +54,11 @@ public class ProfileActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar1);
         yes = findViewById(R.id.btnYes);
 
+        progressBar.setVisibility(View.VISIBLE);
+
         appCompatTextViewEmail.setText(user.getEmail());
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
-
-        progressBar.setVisibility(View.VISIBLE);
 
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
@@ -75,9 +77,6 @@ public class ProfileActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), databaseError.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-
-        progressBar.setVisibility(View.INVISIBLE);
-
     }
 
     private void updateButton() {

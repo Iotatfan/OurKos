@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.ourkos.LoginActivity;
 import com.example.ourkos.ProfileActivity;
 import com.example.ourkos.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SettingsFragment extends Fragment {
 
@@ -23,6 +24,7 @@ public class SettingsFragment extends Fragment {
 
     private Button logoutBtn;
     private Button profileBtn;
+    private FirebaseAuth auth;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class SettingsFragment extends Fragment {
         return root;
     }
 
+
     private void initLogout(View rootView) {
 
         logoutBtn = rootView.findViewById(R.id.logoutBtn);
@@ -53,8 +56,9 @@ public class SettingsFragment extends Fragment {
             public void onClick(View view) {
 
                 Intent logout = new Intent(getActivity(), LoginActivity.class);
+                auth.getInstance().signOut();
                 startActivity(logout);
-//                finish();
+
             }
         });
     }

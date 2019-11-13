@@ -2,16 +2,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ourkos">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".ChatRoom"></activity>
         <activity
             android:name=".LoginActivity"
             android:label="@string/app_name">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,12 +37,11 @@
         </activity>
         <activity
             android:name=".ProfileActivity"
-            android:parentActivityName=".MainActivity"
-            android:label="Profile">
-        </activity>
-        <activity android:name=".SearchListActivity"
-            android:parentActivityName=".MainActivity">
-        </activity>
+            android:label="Profile"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".SearchListActivity"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>
