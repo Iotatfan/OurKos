@@ -3,17 +3,13 @@ package com.example.ourkos;
 import java.util.ArrayList;
 
 public class Kost {
-    public int image;
-    public ArrayList<String> imageb;
-    public ArrayList<String> imagek;
-    public ArrayList<String> imagem;
     public String namaKost;
     public String alamat;
     public int stock;
-    public int hargab;
-    public int hargah;
-    public int hargam;
-    public int hargat;
+    public int hargabulanan;
+    public int hargaharian;
+    public int hargamingguan;
+    public int hargatahunan;
     public String region;
     public String jenis;
 
@@ -21,24 +17,16 @@ public class Kost {
 
     }
 
-    public Kost(int image,ArrayList<String> imageb,ArrayList<String> imagek,ArrayList<String> imagem, String namaKost, String alamat, int stock,int hargab,int hargah,int hargam,int hargat,String region,String jenis) {
-        this.image = image;
-        this.imageb=imageb;
-        this.imagek=imagek;
-        this.imagem=imagem;
+    public Kost(String namaKost, String alamat, int stock,int hargab,int hargah,int hargam,int hargat,String region,String jenis) {
         this.namaKost = namaKost;
         this.alamat = alamat;
         this.stock = stock;
-        this.hargab=hargab;
-        this.hargah=hargah;
-        this.hargam=hargam;
-        this.hargat=hargat;
+        this.hargabulanan=hargab;
+        this.hargaharian=hargah;
+        this.hargamingguan=hargam;
+        this.hargatahunan=hargat;
         this.region=region;
         this.jenis=jenis;
-    }
-
-    public int getImage() {
-        return image;
     }
 
     public int getStock() {
@@ -52,8 +40,8 @@ public class Kost {
     public String getAlamat() {
         return alamat;
     }
-    public int getHarga(){
-        return hargab;
+    public int getHargabulanan(){
+        return hargabulanan;
     }
     public String getJenis(){
         return jenis;

@@ -10,14 +10,11 @@ import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
-
-import java.util.ArrayList;
 
 public class FirebaseDBCreateKostActivity extends AppCompatActivity {
     private EditText edtNama, edtAlamat,edtHargaH,edtHargaM,edtHargaB,edtHargaT,edtStock;
@@ -111,14 +108,15 @@ public class FirebaseDBCreateKostActivity extends AppCompatActivity {
                     stock=Integer.parseInt(stocks);
                     progressBar.setVisibility(View.VISIBLE);
                     writeToDB(nama,alamat,jenis,region,hari,minggu,bulan,tahun,stock);
-                    startActivity(new Intent(FirebaseDBCreateKostActivity.this,Upload.class));
+                    Intent intent = new Intent(FirebaseDBCreateKostActivity.this,Upload.class);
+                    intent.putExtra("nama",nama);
+                    startActivity(intent);
                 }
             }
         });
     }
     private void writeToDB(String nama, String alamat, String jenis,String region,int hari,int minggu, int bulan,int tahun,int stock){
-        ArrayList <String> img=new ArrayList<String>();
-        Kost kost = new Kost(0,img,img,img,nama,alamat,stock,bulan,hari,minggu,tahun,region,jenis);
-        database.child("kost").child(user.getUid()).child(nama).setValue(kost);
+        Kost kost = new Kost(nama,alamat,stock,bulan,hari,minggu,tahun,region,jenis);
+        database.child("kost").child(user.getUid()).child(nama).child("detail").setValue(kost);
     }
 }

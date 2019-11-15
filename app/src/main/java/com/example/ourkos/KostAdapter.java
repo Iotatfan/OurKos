@@ -52,10 +52,10 @@ public class KostAdapter extends ArrayAdapter<Kost> {
             holder=(KostHolder)root.getTag();
         }
         Kost kost=listKost.get(position);
-        holder.image.setImageResource(kost.getImage());
+//        holder.image.setImageResource(kost.getImage());
         holder.txtnama.setText(kost.getNamaKost());
         holder.txtalamat.setText(kost.getAlamat());
-        holder.txtharga.setText("Rp." + kost.getHarga());
+        holder.txtharga.setText("Rp." + kost.getHargabulanan());
         holder.txtstock.setText("Ruangan tersisa : " + String.valueOf(kost.getStock()));
         holder.txtjenis.setText(kost.getJenis());
         return root;

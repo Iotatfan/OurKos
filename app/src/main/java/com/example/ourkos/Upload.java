@@ -36,6 +36,7 @@ public class Upload extends AppCompatActivity {
     private final int MULTIPLE_IMAGE = 1;
     private final int SINGLE_IMAGE=2;
     private Uri ImageUri;
+    private String nama;
     private StorageReference storageReference;
     ArrayList<Uri> ImageList = new ArrayList<Uri>();
     Kost kost;
@@ -44,6 +45,9 @@ public class Upload extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
+        getSupportActionBar().hide();
+        Intent intent = getIntent();
+        nama = intent.getStringExtra("nama");
         initViews();
         progressBar.setVisibility(View.INVISIBLE);
         pilihFoto();
@@ -67,7 +71,7 @@ public class Upload extends AppCompatActivity {
         database=FirebaseDatabase.getInstance().getReference();
     }
     private void getUserData(){
-        database.child("kost").child(user.getUid()).addValueEventListener(new ValueEventListener() {
+        database.child("kost").child(user.getUid()).child(nama).child("detail").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 kost = dataSnapshot.getValue(Kost.class);
@@ -124,7 +128,7 @@ public class Upload extends AppCompatActivity {
                 storageReference=storage.getReference().child("image").child(user.getUid()).child(kost.getNamaKost());
                 for(uploadcount=0;uploadcount<ImageList.size();uploadcount++){
                     Uri oneImage=ImageList.get(uploadcount);
-                    final StorageReference imageName=storageReference.child("imageBangunan");
+                    final StorageReference imageName=storageReference.child("imageBangunan" + uploadcount);
                     imageName.putFile(oneImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -145,7 +149,7 @@ public class Upload extends AppCompatActivity {
         ArrayList<String> imag=new ArrayList<String>();
         imag.add(Url);
 
-        database.child("kost").child(user.getUid()).child(kost.getNamaKost()).push().setValue(imag);
+        database.child("kost").child(user.getUid()).child(kost.getNamaKost()).child("image").push().setValue(imag);
         ImageList.clear();
         progressBar.setVisibility(View.INVISIBLE);
     }
