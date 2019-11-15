@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/pureWhite"
+    >
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/bg_color"
+        app:title="Upload Foto"
+        app:titleTextColor="@color/pureWhite">
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginBottom="10dp"
+            android:gravity="top">
+
+            <ProgressBar
+                android:id="@+id/progressBar1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:indeterminate="true"
+                />
+
+        </LinearLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/cover"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/pureBlack"
+                            android:textStyle="bold"
+                            android:gravity="left"
+                            android:textSize="20dp"
+                            android:text="Foto Cover"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:textColor="@color/pureBlack"
+                            android:textStyle="normal"
+                            android:gravity="bottom"
+                            android:textSize="10dp"
+                            android:text="Tambah 1 foto sebagai kesan pertama kos"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+                        <Button
+                            android:id="@+id/btncover"
+                            android:layout_width="0dp"
+                            android:layout_height="90dp"
+                            android:text="Tambah Foto"
+                            android:gravity="center"
+                            android:background="@drawable/custom_button"
+                            android:textColor="@color/bg_color"
+                            android:layout_weight="0.5" />
+                        <Button
+                            android:id="@+id/btnupload1"
+                            android:layout_width="0dp"
+                            android:layout_height="90dp"
+                            android:layout_marginLeft="5dp"
+                            android:text="Upload Foto"
+                            android:gravity="center"
+                            android:background="@drawable/button_rounded"
+                            android:textColor="@color/pureWhite"
+                            android:layout_weight="0.5" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/pureBlack"
+                            android:textStyle="bold"
+                            android:gravity="left"
+                            android:textSize="20dp"
+                            android:text="Foto Bangunan"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:textColor="@color/pureBlack"
+                            android:textStyle="normal"
+                            android:gravity="bottom"
+                            android:textSize="10dp"
+                            android:text="Tambah beberapa foto yang mewakili bangunan kos"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+                        <Button
+                            android:id="@+id/btnbangun"
+                            android:layout_width="0dp"
+                            android:layout_height="90dp"
+                            android:text="Tambah Foto"
+                            android:gravity="center"
+                            android:background="@drawable/custom_button"
+                            android:textColor="@color/bg_color"
+                            android:layout_weight="0.5"/>
+                        <Button
+                            android:id="@+id/btnupload2"
+                            android:layout_width="0dp"
+                            android:layout_height="90dp"
+                            android:layout_marginLeft="5dp"
+                            android:text="Upload Foto"
+                            android:gravity="center"
+                            android:background="@drawable/button_rounded"
+                            android:textColor="@color/pureWhite"
+                            android:layout_weight="0.5" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/pureBlack"
+                            android:textStyle="bold"
+                            android:gravity="left"
+                            android:textSize="20dp"
+                            android:text="Foto Kamar"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:textColor="@color/pureBlack"
+                            android:textStyle="normal"
+                            android:gravity="bottom"
+                            android:textSize="10dp"
+                            android:text="Tambah beberapa foto yang mewakili kamar kos"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+                        <Button
+                            android:id="@+id/btnkamar"
+                            android:layout_width="0dp"
+                            android:layout_height="90dp"
+                            android:text="Tambah Foto"
+                            android:gravity="center"
+                            android:background="@drawable/custom_button"
+                            android:textColor="@color/bg_color"
+                            android:layout_weight="0.5" />
+                        <Button
+                            android:id="@+id/btnupload3"
+                            android:layout_width="0dp"
+                            android:layout_height="90dp"
+                            android:layout_marginLeft="5dp"
+                            android:text="Upload Foto"
+                            android:gravity="center"
+                            android:background="@drawable/button_rounded"
+                            android:textColor="@color/pureWhite"
+                            android:layout_weight="0.5" />
+
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/pureBlack"
+                            android:textStyle="bold"
+                            android:gravity="left"
+                            android:textSize="20dp"
+                            android:text="Foto Kamar Mandi"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:textColor="@color/pureBlack"
+                            android:textStyle="normal"
+                            android:gravity="bottom"
+                            android:textSize="10dp"
+                            android:text="Tambah beberapa foto yang mewakili kamar mandi kos"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+                        <Button
+                            android:id="@+id/btnmandi"
+                            android:layout_width="0dp"
+                            android:layout_height="90dp"
+                            android:text="Tambah Foto"
+                            android:gravity="center"
+                            android:background="@drawable/custom_button"
+                            android:textColor="@color/bg_color"
+                            android:layout_weight="0.5" />
+                        <Button
+                            android:id="@+id/btnupload4"
+                            android:layout_width="0dp"
+                            android:layout_height="90dp"
+                            android:layout_marginLeft="5dp"
+                            android:text="Upload Foto"
+                            android:gravity="center"
+                            android:background="@drawable/button_rounded"
+                            android:textColor="@color/pureWhite"
+                            android:layout_weight="0.5" />
+
+                    </LinearLayout>
+                </LinearLayout>
+                <Button
+                    android:id="@+id/btn_selesai"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_rounded"
+                    android:textColor="@color/pureWhite"
+                    android:text="Selesai" />
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

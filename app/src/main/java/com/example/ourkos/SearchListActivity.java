@@ -22,9 +22,10 @@ public class SearchListActivity extends AppCompatActivity {
 
         ListView listView=(ListView)findViewById(R.id.listV);
         List<Kost> listKost=new ArrayList<Kost>();
+        ArrayList<String> img=new ArrayList<>();
 
         Kost kost;
-        kost = new Kost(R.drawable.contoh,"Kosku","Jl. Keputih Utara Gg Mawar A 19",5,500000,"Surabaya","Putra");
+        kost = new Kost();
         if(name.equals(kost.getRegion())){
             listKost.add(kost);
             listView.setAdapter(new KostAdapter(this,R.layout.list_item_search,listKost));

@@ -86,11 +86,9 @@ public class SettingsFragment extends Fragment {
             imagePemilik.setVisibility(View.GONE);
             vPemilk.setVisibility(View.GONE);
         }
-        else {
             pemilikBtn.setVisibility(View.VISIBLE);
             imagePemilik.setVisibility(View.VISIBLE);
             vPemilk.setVisibility(View.VISIBLE);
-        }
     }
 
     private void initLogout(View rootView) {

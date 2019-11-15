@@ -169,10 +169,11 @@
                             android:id="@+id/editTextPhone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:inputType="phone"
                             android:text=""
-                            android:textStyle="normal"
                             android:textColor="@color/pureBlack"
-                            android:textSize="22dp" />
+                            android:textSize="22dp"
+                            android:textStyle="normal" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 

@@ -49,6 +49,8 @@
             android:parentActivityName=".MainActivity"/>
         <activity android:name=".FirebaseDBCreateKostActivity"
             android:parentActivityName=".MainActivity"/>
+        <activity android:name=".Upload"
+            android:parentActivityName=".FirebaseDBCreateKostActivity"/>
     </application>
 
 </manifest>

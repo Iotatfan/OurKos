@@ -21,6 +21,23 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginBottom="10dp"
+            android:gravity="top">
+
+            <ProgressBar
+                android:id="@+id/progressBar1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:indeterminate="true"
+                />
+
+        </LinearLayout>
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -85,174 +102,41 @@
                         />
 
                 </LinearLayout>
-                <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/pureBlack"
-                        android:textStyle="bold"
-                        android:gravity="left"
-                        android:textSize="20dp"
-                        android:text="Foto Cover"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:textColor="@color/pureBlack"
-                        android:textStyle="normal"
-                        android:gravity="bottom"
-                        android:textSize="10dp"
-                        android:text="Tambah 1 foto sebagai kesan pertama kos"/>
-
-                </LinearLayout>
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="90dp"
-                    android:text="Tambah Foto"
-                    android:gravity="center"
-                    android:background="@drawable/custom_button"
-                    android:textColor="@color/bg_color"
-                    android:layout_weight="1" />
-            </LinearLayout>
-                <LinearLayout
+                <EditText
+                    android:id="@+id/etstock"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:orientation="horizontal">
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/pureBlack"
-                            android:textStyle="bold"
-                            android:gravity="left"
-                            android:textSize="20dp"
-                            android:text="Foto Bangunan"/>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:textColor="@color/pureBlack"
-                            android:textStyle="normal"
-                            android:gravity="bottom"
-                            android:textSize="10dp"
-                            android:text="Tambah beberapa foto yang mewakili bangunan kos"/>
-
-                    </LinearLayout>
-                    <Button
-                        android:layout_width="0dp"
-                        android:layout_height="90dp"
-                        android:text="Tambah Foto"
-                        android:gravity="center"
-                        android:background="@drawable/custom_button"
-                        android:textColor="@color/bg_color"
-                        android:layout_weight="1" />
-                </LinearLayout>
-                <LinearLayout
+                    android:hint="Jumlah Kamar yang kosong"
+                    android:inputType="number"
+                    android:textColorHint="@color/pureBlack" />
+                <EditText
+                    android:id="@+id/ethari"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:orientation="horizontal">
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/pureBlack"
-                            android:textStyle="bold"
-                            android:gravity="left"
-                            android:textSize="20dp"
-                            android:text="Foto Kamar"/>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:textColor="@color/pureBlack"
-                            android:textStyle="normal"
-                            android:gravity="bottom"
-                            android:textSize="10dp"
-                            android:text="Tambah beberapa foto yang mewakili kamar kos"/>
-
-                    </LinearLayout>
-                    <Button
-                        android:layout_width="0dp"
-                        android:layout_height="90dp"
-                        android:text="Tambah Foto"
-                        android:gravity="center"
-                        android:background="@drawable/custom_button"
-                        android:textColor="@color/bg_color"
-                        android:layout_weight="1" />
-                </LinearLayout>
-                <LinearLayout
+                    android:hint="Harga Kos Per Hari"
+                    android:inputType="number"
+                    android:textColorHint="@color/pureBlack" />
+                <EditText
+                    android:id="@+id/etminggu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:orientation="horizontal">
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/pureBlack"
-                            android:textStyle="bold"
-                            android:gravity="left"
-                            android:textSize="20dp"
-                            android:text="Foto Kamar Mandi"/>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:textColor="@color/pureBlack"
-                            android:textStyle="normal"
-                            android:gravity="bottom"
-                            android:textSize="10dp"
-                            android:text="Tambah beberapa foto yang mewakili kamar mandi kos"/>
-
-                    </LinearLayout>
-                    <Button
-                        android:layout_width="0dp"
-                        android:layout_height="90dp"
-                        android:text="Tambah Foto"
-                        android:gravity="center"
-                        android:background="@drawable/custom_button"
-                        android:textColor="@color/bg_color"
-                        android:layout_weight="1" />
-                </LinearLayout>
+                    android:hint="Harga Kos Per Minggu"
+                    android:inputType="number"
+                    android:textColorHint="@color/pureBlack" />
+                <EditText
+                    android:id="@+id/etbulan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Harga Kos Per Bulan"
+                    android:inputType="number"
+                    android:textColorHint="@color/pureBlack" />
+                <EditText
+                    android:id="@+id/ettahun"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Harga Kos Per Tahun"
+                    android:inputType="number"
+                    android:textColorHint="@color/pureBlack" />
                 <Button
                     android:id="@+id/btn_lanjut"
                     android:layout_width="match_parent"
@@ -260,7 +144,6 @@
                     android:background="@drawable/button_rounded"
                     android:textColor="@color/pureWhite"
                     android:text="Selanjutnya" />
-
             </LinearLayout>
 
         </ScrollView>
