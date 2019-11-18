@@ -14,7 +14,7 @@
         app:titleTextColor="@color/pureWhite">
     </androidx.appcompat.widget.Toolbar>
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -150,9 +150,11 @@
             </View>
 
             <LinearLayout
+                android:id="@+id/linearKos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/imagepemilik"
@@ -169,7 +171,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/pureWhite"
                     android:gravity="center_vertical"
-                    android:text="Pemilik Kos"
+                    android:text="Kos"
                     style="@style/Widget.AppCompat.Button.Borderless"/>
 
             </LinearLayout>
@@ -178,7 +180,8 @@
                 android:id="@+id/vpemilik"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="@color/shadow">
+                android:background="@color/shadow"
+                android:visibility="gone">
             </View>
 
             <Button
@@ -193,6 +196,19 @@
 
         </LinearLayout>
 
-    </ScrollView>
+        <View
+            android:id="@+id/white_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/pureWhite"/>
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:indeterminate="true"></ProgressBar>
+
+    </RelativeLayout>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
