@@ -162,6 +162,7 @@
                     android:layout_height="match_parent"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
+                    android:visibility="visible"
                     android:src="@drawable/baseline_lock_black_18dp">
                 </ImageView>
 
