@@ -5,19 +5,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.ourkos.ChangePassword;
-import com.example.ourkos.FirebaseDBCreateKostActivity;
 import com.example.ourkos.LoginActivity;
+import com.example.ourkos.OwnerActivity;
 import com.example.ourkos.ProfileActivity;
 import com.example.ourkos.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,7 +36,6 @@ public class SettingsFragment extends Fragment {
     private FirebaseAuth auth;
     private FirebaseUser user;
     private DatabaseReference database;
-    private String type;
     private ImageView imagePemilik;
     private View vPemilk;
 
@@ -46,12 +44,15 @@ public class SettingsFragment extends Fragment {
 
         settingsViewModel = ViewModelProviders.of(this).get(SettingsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_settings, container, false);
-        settingsViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-            }
-        });
+//        settingsViewModel.getText().observe(this, new Observer<String>() {
+//            @Override
+//            public void onChanged(@Nullable String s) {
+////                textView.setText(s);
+//            }
+//        });
+
+        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
         initView(root);
         initLogout(root);
@@ -59,20 +60,41 @@ public class SettingsFragment extends Fragment {
         initProfile(root);
         iniPemilik();
 
+        getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
         return root;
     }
 
+    public void onBackPressed() {
+        super.getActivity().onBackPressed();
+        getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
+
     private void initView(View root) {
+
         pemilikBtn = root.findViewById(R.id.pemilikBtn);
         imagePemilik = root.findViewById(R.id.imagepemilik);
         vPemilk = root.findViewById(R.id.vpemilik);
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         database= FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
+
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                type = dataSnapshot.child("type").getValue().toString();
+                String type = dataSnapshot.child("type").getValue().toString();
+
+                if(type != "Pemilik Kos"){
+                    pemilikBtn.setVisibility(View.GONE);
+                    imagePemilik.setVisibility(View.GONE);
+                    vPemilk.setVisibility(View.GONE);
+                }
+                else {
+                    pemilikBtn.setVisibility(View.VISIBLE);
+                    imagePemilik.setVisibility(View.VISIBLE);
+                    vPemilk.setVisibility(View.VISIBLE);
+                }
+
             }
 
             @Override
@@ -81,14 +103,8 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        if(type!="Pemilik Kos"){
-            pemilikBtn.setVisibility(View.GONE);
-            imagePemilik.setVisibility(View.GONE);
-            vPemilk.setVisibility(View.GONE);
-        }
-            pemilikBtn.setVisibility(View.VISIBLE);
-            imagePemilik.setVisibility(View.VISIBLE);
-            vPemilk.setVisibility(View.VISIBLE);
+
+
     }
 
     private void initLogout(View rootView) {
@@ -132,7 +148,7 @@ public class SettingsFragment extends Fragment {
         pemilikBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent pemilik =new Intent(getActivity(), FirebaseDBCreateKostActivity.class);
+                Intent pemilik =new Intent(getActivity(), OwnerActivity.class);
                 startActivity(pemilik);
             }
         });

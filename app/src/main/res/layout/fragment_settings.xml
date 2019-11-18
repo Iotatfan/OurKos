@@ -160,6 +160,7 @@
                     android:layout_height="match_parent"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
+                    android:visibility="visible"
                     android:src="@drawable/baseline_lock_black_18dp">
                 </ImageView>
 
@@ -170,6 +171,7 @@
                     android:backgroundTint="@color/pureWhite"
                     android:gravity="center_vertical"
                     android:text="Pemilik Kos"
+                    android:visibility="visible"
                     style="@style/Widget.AppCompat.Button.Borderless"/>
 
             </LinearLayout>
@@ -178,6 +180,7 @@
                 android:id="@+id/vpemilik"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
+                android:visibility="visible"
                 android:background="@color/shadow">
             </View>
 

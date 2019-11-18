@@ -120,15 +120,87 @@ public class Upload extends AppCompatActivity {
         });
     }
     private void uploadFoto(){
+        upload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                progressBar.setVisibility(View.VISIBLE);
+                storage=FirebaseStorage.getInstance();
+                storageReference=storage.getReference().child("image").child(user.getUid()).child(kost.getNamaKost()).child("bangunan");
+                for(uploadcount=0;uploadcount<ImageList.size();uploadcount++){
+                    Uri oneImage=ImageList.get(uploadcount);
+                    final StorageReference imageName=storageReference.child("imageBangunan" + uploadcount);
+                    imageName.putFile(oneImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            imageName.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    String Url =String.valueOf(uri);
+                                    StoreLink(Url);
+                                }
+                            });
+                        }
+                    });
+                }
+            }
+        });
         upload2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
                 storage=FirebaseStorage.getInstance();
-                storageReference=storage.getReference().child("image").child(user.getUid()).child(kost.getNamaKost());
+                storageReference=storage.getReference().child("image").child(user.getUid()).child(kost.getNamaKost()).child("bangunan");
                 for(uploadcount=0;uploadcount<ImageList.size();uploadcount++){
                     Uri oneImage=ImageList.get(uploadcount);
                     final StorageReference imageName=storageReference.child("imageBangunan" + uploadcount);
+                    imageName.putFile(oneImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            imageName.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    String Url =String.valueOf(uri);
+                                    StoreLink(Url);
+                                }
+                            });
+                        }
+                    });
+                }
+            }
+        });
+        upload3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                progressBar.setVisibility(View.VISIBLE);
+                storage=FirebaseStorage.getInstance();
+                storageReference=storage.getReference().child("image").child(user.getUid()).child(kost.getNamaKost()).child("kamar");
+                for(uploadcount=0;uploadcount<ImageList.size();uploadcount++){
+                    Uri oneImage=ImageList.get(uploadcount);
+                    final StorageReference imageName=storageReference.child("imageKamar" + uploadcount);
+                    imageName.putFile(oneImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            imageName.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    String Url =String.valueOf(uri);
+                                    StoreLink(Url);
+                                }
+                            });
+                        }
+                    });
+                }
+            }
+        });
+        upload4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                progressBar.setVisibility(View.VISIBLE);
+                storage=FirebaseStorage.getInstance();
+                storageReference=storage.getReference().child("image").child(user.getUid()).child(kost.getNamaKost()).child("kamarmandi");
+                for(uploadcount=0;uploadcount<ImageList.size();uploadcount++){
+                    Uri oneImage=ImageList.get(uploadcount);
+                    final StorageReference imageName=storageReference.child("imageKamarmandi" + uploadcount);
                     imageName.putFile(oneImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -150,6 +222,7 @@ public class Upload extends AppCompatActivity {
         imag.add(Url);
 
         database.child("kost").child(user.getUid()).child(kost.getNamaKost()).child("image").push().setValue(imag);
+        Toast.makeText(this,"Upload Success",Toast.LENGTH_LONG).show();
         ImageList.clear();
         progressBar.setVisibility(View.INVISIBLE);
     }
@@ -157,7 +230,7 @@ public class Upload extends AppCompatActivity {
         btnselesai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Upload.this,OwnerActivity.class);
+                Intent intent = new Intent(Upload.this,FirebaseDBCreateKostActivity.class);
                 startActivity(intent);
             }
         });
@@ -167,8 +240,10 @@ public class Upload extends AppCompatActivity {
         super.onActivityResult(requestCode,resultCode,data);
         if(requestCode == SINGLE_IMAGE && resultCode == RESULT_OK && data != null && data.getData()!=null){
             ImageUri =data.getData();
+            ImageList.add(ImageUri);
+            Toast.makeText(this,"Choose Success",Toast.LENGTH_LONG).show();
         }
-        else if(requestCode==MULTIPLE_IMAGE && resultCode == RESULT_OK && data.getClipData()!=null){
+        else if(requestCode==MULTIPLE_IMAGE && resultCode == RESULT_OK && data!=null && data.getClipData()!=null){
             int count = data.getClipData().getItemCount();
             int currentcount=0;
             while(currentcount < count){
@@ -176,6 +251,15 @@ public class Upload extends AppCompatActivity {
                 ImageList.add(ImageUri);
                 currentcount = currentcount + 1 ;
             }
+            Toast.makeText(this,"Choose Success",Toast.LENGTH_LONG).show();
+        }
+        else if(requestCode == MULTIPLE_IMAGE && resultCode ==RESULT_OK && data != null && data.getData()!=null){
+            ImageUri =data.getData();
+            ImageList.add(ImageUri);
+            Toast.makeText(this,"Choose Success",Toast.LENGTH_LONG).show();
+        }
+        else{
+            Toast.makeText(this,"Choose Failed",Toast.LENGTH_LONG).show();
         }
     }
 }
