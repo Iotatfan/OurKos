@@ -31,7 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 public class SettingsFragment extends Fragment {
 
     private SettingsViewModel settingsViewModel;
-
+    private DatabaseReference mDatabase;
     private Button logoutBtn, profileBtn, changePwButton, notifButton, helpButton;
     private LinearLayout kos;
     private Button pemilikBtn;
@@ -41,6 +41,7 @@ public class SettingsFragment extends Fragment {
     private ImageView imagePemilik;
     private View vPemilk, vLoading;
     private ProgressBar loadingPrgress;
+    String username, gender, phone;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -48,18 +49,11 @@ public class SettingsFragment extends Fragment {
         settingsViewModel = ViewModelProviders.of(this).get(SettingsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_settings, container, false);
 
-//        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-//                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-
-
-
         initView(root);
         initLogout(root);
         initChangePassword(root);
         initProfile(root);
         iniPemilik();
-
-//        getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
         return root;
     }
@@ -75,12 +69,15 @@ public class SettingsFragment extends Fragment {
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
-        database= FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
+        database = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
 
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String type = dataSnapshot.child("type").getValue().toString();
+                username = dataSnapshot.child("username").getValue().toString();
+                gender = dataSnapshot.child("gender").getValue().toString();
+                phone = dataSnapshot.child("phone").getValue().toString();
 
                 if(type.equals("Pemilik Kos")){
                     pemilikBtn.setVisibility(View.VISIBLE);
@@ -91,7 +88,7 @@ public class SettingsFragment extends Fragment {
                     vLoading.setVisibility(View.GONE);
                     loadingPrgress.setVisibility(View.GONE);
 
-                    Toast.makeText(getActivity().getApplicationContext(), "Masuk", Toast.LENGTH_LONG).show();
+//                    Toast.makeText(getActivity().getApplicationContext(), "Masuk", Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -124,6 +121,9 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent profile = new Intent(getActivity(), ProfileActivity.class);
+                profile.putExtra("username", username);
+                profile.putExtra("gender", gender);
+                profile.putExtra("phone", phone);
                 startActivity(profile);
             }
         });
@@ -145,9 +145,10 @@ public class SettingsFragment extends Fragment {
         pemilikBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent pemilik =new Intent(getActivity(), OwnerActivity.class);
+                Intent pemilik = new Intent(getActivity(), OwnerActivity.class);
                 startActivity(pemilik);
             }
         });
     }
+
 }

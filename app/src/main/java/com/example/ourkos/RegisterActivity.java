@@ -63,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
         tilConfirm = findViewById(R.id.textInputLayoutConfirm);
         registerButton = findViewById(R.id.registerButton);
         auth = FirebaseAuth.getInstance();
-        database=FirebaseDatabase.getInstance().getReference();
+        database = FirebaseDatabase.getInstance().getReference();
 
         spinnerAccess.setAdapter(adapterAccess);
         spinnerGender.setAdapter(adapterGender);

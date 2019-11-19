@@ -20,9 +20,9 @@ public class SearchListActivity extends AppCompatActivity {
         name = intent.getStringExtra("place");
         getSupportActionBar().setTitle(name);
 
-        ListView listView=(ListView)findViewById(R.id.listV);
-        List<Kost> listKost=new ArrayList<Kost>();
-        ArrayList<String> img=new ArrayList<>();
+        ListView listView = findViewById(R.id.listV);
+        List<Kost> listKost = new ArrayList<Kost>();
+        ArrayList<String> img = new ArrayList<>();
 
         Kost kost;
         kost = new Kost();

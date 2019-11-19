@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".KosActivity">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.SearchView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_color"
+            android:orientation="horizontal"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nama Kos"
+            android:textSize="24dp"
+            android:textColor="@color/pureBlack"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Hardcoded Area -->
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/contoh"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/fasil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fasilitas"
+            android:textColor="@color/pureBlack"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginStart="12dp" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Luas : - "
+                android:textSize="20sp"
+                android:textColor="@color/pureBlack"
+                android:layout_marginStart="16dp"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Listrik"
+                android:textSize="20sp"
+                android:textColor="@color/pureBlack"
+                android:layout_marginStart="16dp"
+                android:layout_weight="0.5"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/okListrik"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/round_check_circle_outline_black_24"
+                />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/noListrik"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/round_clear_black_24"
+                />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="AC"
+                android:textSize="20sp"
+                android:textColor="@color/pureBlack"
+                android:layout_marginStart="16dp"
+                android:layout_weight="0.5"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/okAC"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/round_check_circle_outline_black_24"
+                />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/noAC"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/round_clear_black_24"
+                />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Air"
+                android:textSize="20sp"
+                android:textColor="@color/pureBlack"
+                android:layout_marginStart="16dp"
+                android:layout_weight="0.5"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/okAir"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/round_check_circle_outline_black_24"
+                />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/noAir"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/round_clear_black_24"
+                />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Kasur"
+                android:textSize="20sp"
+                android:textColor="@color/pureBlack"
+                android:layout_marginStart="16dp"
+                android:layout_weight="0.5"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/okKasur"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/round_check_circle_outline_black_24"
+                />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/noKasur"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/round_clear_black_24"
+                />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Wifi"
+                android:textSize="20sp"
+                android:textColor="@color/pureBlack"
+                android:layout_marginStart="16dp"
+                android:layout_weight="0.5"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/okWifi"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/round_check_circle_outline_black_24"
+                />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/noWifi"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/round_clear_black_24"
+                />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Kamar Mandi Dalam"
+                android:textSize="20sp"
+                android:textColor="@color/pureBlack"
+                android:layout_marginStart="16dp"
+                android:layout_weight="0.5"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/okToilet"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/round_check_circle_outline_black_24"
+                />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/noToilet"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/round_clear_black_24"
+                />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Harga Sewa"
+            android:textColor="@color/pureBlack"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Harian"
+                android:textSize="20sp"
+                android:textColor="@color/pureBlack"
+                android:layout_marginStart="16dp"
+                android:layout_weight="0.5"/>
+
+            <TextView
+                android:id="@+id/harga_harian"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20sp"
+                android:textColor="@color/pureBlack"
+                android:layout_marginStart="16dp"
+                android:layout_weight="0.5"/>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Bulanan"
+                android:textSize="20sp"
+                android:textColor="@color/pureBlack"
+                android:layout_marginStart="16dp"
+                android:layout_weight="0.5"/>
+
+            <TextView
+                android:id="@+id/harga_bulanan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20sp"
+                android:textColor="@color/pureBlack"
+                android:layout_marginStart="16dp"
+                android:layout_weight="0.5"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Harian"
+                android:textSize="20sp"
+                android:textColor="@color/pureBlack"
+                android:layout_marginStart="16dp"
+                android:layout_weight="0.5"/>
+
+            <TextView
+                android:id="@+id/harga_tahunan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20sp"
+                android:textColor="@color/pureBlack"
+                android:layout_marginStart="16dp"
+                android:layout_weight="0.5"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+<!--    <Button-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/ripple_button"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_margin="32dp"-->
+<!--        android:text="Sewa"-->
+<!--        android:textStyle="normal"-->
+<!--        android:textColor="@color/pureWhite"-->
+<!--        android:textSize="18dp"/>-->
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabSewa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="32dp"
+        app:fabSize="normal"
+        android:background="@color/bg_color_dark"
+        android:backgroundTint="@color/bg_color_dark"
+        android:src="@drawable/baseline_shopping_cart_white_24"
+        />
+
+
+</RelativeLayout>
