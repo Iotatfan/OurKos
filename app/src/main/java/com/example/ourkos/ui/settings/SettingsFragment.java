@@ -5,9 +5,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -30,29 +31,23 @@ import com.google.firebase.database.ValueEventListener;
 public class SettingsFragment extends Fragment {
 
     private SettingsViewModel settingsViewModel;
-
+    private DatabaseReference mDatabase;
     private Button logoutBtn, profileBtn, changePwButton, notifButton, helpButton;
+    private LinearLayout kos;
     private Button pemilikBtn;
     private FirebaseAuth auth;
     private FirebaseUser user;
     private DatabaseReference database;
     private ImageView imagePemilik;
-    private View vPemilk;
+    private View vPemilk, vLoading;
+    private ProgressBar loadingPrgress;
+    String username, gender, phone;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         settingsViewModel = ViewModelProviders.of(this).get(SettingsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_settings, container, false);
-//        settingsViewModel.getText().observe(this, new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-////                textView.setText(s);
-//            }
-//        });
-
-        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
         initView(root);
         initLogout(root);
@@ -60,14 +55,7 @@ public class SettingsFragment extends Fragment {
         initProfile(root);
         iniPemilik();
 
-        getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-
         return root;
-    }
-
-    public void onBackPressed() {
-        super.getActivity().onBackPressed();
-        getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 
     private void initView(View root) {
@@ -75,24 +63,32 @@ public class SettingsFragment extends Fragment {
         pemilikBtn = root.findViewById(R.id.pemilikBtn);
         imagePemilik = root.findViewById(R.id.imagepemilik);
         vPemilk = root.findViewById(R.id.vpemilik);
+        kos = root.findViewById(R.id.linearKos);
+        vLoading = root.findViewById(R.id.white_view);
+        loadingPrgress = root.findViewById(R.id.loading);
+
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
-        database= FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
+        database = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
 
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String type = dataSnapshot.child("type").getValue().toString();
+                username = dataSnapshot.child("username").getValue().toString();
+                gender = dataSnapshot.child("gender").getValue().toString();
+                phone = dataSnapshot.child("phone").getValue().toString();
 
-                if(type != "Pemilik Kos"){
-                    pemilikBtn.setVisibility(View.GONE);
-                    imagePemilik.setVisibility(View.GONE);
-                    vPemilk.setVisibility(View.GONE);
-                }
-                else {
+                if(type.equals("Pemilik Kos")){
                     pemilikBtn.setVisibility(View.VISIBLE);
                     imagePemilik.setVisibility(View.VISIBLE);
                     vPemilk.setVisibility(View.VISIBLE);
+                    kos.setVisibility(View.VISIBLE);
+
+                    vLoading.setVisibility(View.GONE);
+                    loadingPrgress.setVisibility(View.GONE);
+
+//                    Toast.makeText(getActivity().getApplicationContext(), "Masuk", Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -102,8 +98,6 @@ public class SettingsFragment extends Fragment {
                 Toast.makeText(getActivity().getApplicationContext(), databaseError.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-
-
 
     }
 
@@ -127,6 +121,9 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent profile = new Intent(getActivity(), ProfileActivity.class);
+                profile.putExtra("username", username);
+                profile.putExtra("gender", gender);
+                profile.putExtra("phone", phone);
                 startActivity(profile);
             }
         });
@@ -148,9 +145,10 @@ public class SettingsFragment extends Fragment {
         pemilikBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent pemilik =new Intent(getActivity(), OwnerActivity.class);
+                Intent pemilik = new Intent(getActivity(), OwnerActivity.class);
                 startActivity(pemilik);
             }
         });
     }
+
 }

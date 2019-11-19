@@ -1,5 +1,6 @@
 package com.example.ourkos;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -15,11 +16,8 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -71,25 +69,14 @@ public class ProfileActivity extends AppCompatActivity {
     private void getUserData(){
         appCompatTextViewEmail.setText(user.getEmail());
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
+        Intent profile = getIntent();
+        String username = profile.getStringExtra("username");
+        String gender = profile.getStringExtra("gender");
+        String phone = profile.getStringExtra("phone");
 
-        mDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String username = dataSnapshot.child("username").getValue().toString();
-                String gender = dataSnapshot.child("gender").getValue().toString();
-                String phone = dataSnapshot.child("phone").getValue().toString();
-
-                editTextUsername.setText(username, EditText.BufferType.EDITABLE);
-                appCompatTextViewJK.setText(gender);
-                appCompatTextViewPhone.setText(phone);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getApplicationContext(), databaseError.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
+        editTextUsername.setText(username, EditText.BufferType.EDITABLE);
+        appCompatTextViewJK.setText(gender);
+        appCompatTextViewPhone.setText(phone);
     }
 
     private void updateButton() {
