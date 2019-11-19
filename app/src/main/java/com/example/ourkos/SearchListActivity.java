@@ -22,7 +22,6 @@ public class SearchListActivity extends AppCompatActivity {
 
         ListView listView=(ListView)findViewById(R.id.listV);
         List<Kost> listKost=new ArrayList<Kost>();
-        ArrayList<String> img=new ArrayList<>();
 
         Kost kost;
         kost = new Kost();

@@ -1,6 +1,5 @@
 package com.example.ourkos;
 
-import java.util.ArrayList;
 
 public class Kost {
     public String namaKost;
