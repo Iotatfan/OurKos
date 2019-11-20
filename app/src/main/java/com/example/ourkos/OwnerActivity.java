@@ -82,7 +82,6 @@ public class OwnerActivity extends AppCompatActivity {
                     String nama = noteDataSnapshot.child("namaKost").getValue().toString();
                     data.add(nama);
                 }
-                if(!data.isEmpty()){
             }
 
             @Override
@@ -118,6 +117,4 @@ public class OwnerActivity extends AppCompatActivity {
         empty = findViewById(R.id.empty_view);
         progess=findViewById(R.id.loading);
     }
-
-
 }
