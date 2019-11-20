@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,10 +22,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.security.acl.Owner;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Upload extends AppCompatActivity {
     private Button btncover,btnbangun,btnkamar,btnmandi,upload,upload2,upload3,upload4,btnselesai;
@@ -125,7 +129,7 @@ public class Upload extends AppCompatActivity {
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
                 storage=FirebaseStorage.getInstance();
-                storageReference=storage.getReference().child("image").child(user.getUid()).child(kost.getNamaKost()).child("bangunan");
+                storageReference=storage.getReference().child("image").child(user.getUid()).child(kost.getNamaKost()).child("cover");
                 for(uploadcount=0;uploadcount<ImageList.size();uploadcount++){
                     Uri oneImage=ImageList.get(uploadcount);
                     final StorageReference imageName=storageReference.child("imageBangunan" + uploadcount);
@@ -136,9 +140,16 @@ public class Upload extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     String Url =String.valueOf(uri);
-                                    StoreLink(Url);
+                                    String folder = "cover";
+                                    StoreLink(Url,folder);
                                 }
                             });
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(Upload.this,e.getMessage(),Toast.LENGTH_LONG).show();
                         }
                     });
                 }
@@ -160,9 +171,16 @@ public class Upload extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     String Url =String.valueOf(uri);
-                                    StoreLink(Url);
+                                    String folder = "bangunan";
+                                    StoreLink(Url,folder);
                                 }
                             });
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(Upload.this,e.getMessage(),Toast.LENGTH_LONG).show();
                         }
                     });
                 }
@@ -184,11 +202,18 @@ public class Upload extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     String Url =String.valueOf(uri);
-                                    StoreLink(Url);
+                                    String folder = "kamar";
+                                    StoreLink(Url,folder);
                                 }
                             });
                         }
-                    });
+                    })
+                     .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                             Toast.makeText(Upload.this,e.getMessage(),Toast.LENGTH_LONG).show();
+                        }
+                     });
                 }
             }
         });
@@ -208,20 +233,27 @@ public class Upload extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     String Url =String.valueOf(uri);
-                                    StoreLink(Url);
+                                    String folder = "kamarmandi";
+                                    StoreLink(Url,folder);
                                 }
                             });
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(Upload.this,e.getMessage(),Toast.LENGTH_LONG).show();
                         }
                     });
                 }
             }
         });
     }
-    private void StoreLink(String Url){
-        ArrayList<String> imag=new ArrayList<String>();
-        imag.add(Url);
+    private void StoreLink(String Url,String folder){
+        HashMap<String,String> imag=new HashMap<>();
+        imag.put("imglink",Url);
 
-        database.child("kost").child(user.getUid()).child(kost.getNamaKost()).child("image").push().setValue(imag);
+        database.child("kost").child(user.getUid()).child(kost.getNamaKost()).child("image").child(folder).push().setValue(imag);
         Toast.makeText(this,"Upload Success",Toast.LENGTH_LONG).show();
         ImageList.clear();
         progressBar.setVisibility(View.INVISIBLE);
@@ -230,7 +262,7 @@ public class Upload extends AppCompatActivity {
         btnselesai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Upload.this,FirebaseDBCreateKostActivity.class);
+                Intent intent = new Intent(Upload.this, OwnerActivity.class);
                 startActivity(intent);
             }
         });

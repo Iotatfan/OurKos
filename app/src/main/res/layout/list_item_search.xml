@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        card_view:cardBackgroundColor="@color/PureWhite"
+        card_view:cardBackgroundColor="@color/pureWhite"
         card_view:cardCornerRadius="3dp"
         card_view:cardElevation="2.5dp">
         <LinearLayout

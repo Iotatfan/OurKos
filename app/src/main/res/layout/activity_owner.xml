@@ -6,19 +6,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".OwnerActivity">
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:indeterminate="true"></ProgressBar>
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ListView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list_kos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="visible">
 
-        </ListView>
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:visibility="gone"
+            android:text="Data Kosong" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_createKost"
