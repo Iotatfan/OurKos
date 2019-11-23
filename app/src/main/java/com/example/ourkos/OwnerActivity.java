@@ -29,35 +29,25 @@ public class OwnerActivity extends AppCompatActivity {
     private RecyclerView listKos;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    private ArrayList<String> data;
+    private ArrayList<Kost> data;
     private ArrayList<String> image;
     private DatabaseReference database;
     private FirebaseAuth auth;
     private FirebaseUser user;
     private TextView empty;
-    private ProgressBar progess;
+    private View vLoading;
+    private ProgressBar loadingPrgress;
+    Kost kost;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner);
         initView();
-        getUserData();
         listKos.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         listKos.setLayoutManager(layoutManager);
-        adapter= new OwnerAdapter(getApplicationContext(),data,image);
-        if(adapter.getItemCount() <= 0){
-            empty.setVisibility(View.VISIBLE);
-            listKos.setVisibility(View.GONE);
-            progess.setVisibility(View.GONE);
-        }
-        else{
-            empty.setVisibility(View.GONE);
-            listKos.setVisibility(View.VISIBLE);
-            progess.setVisibility(View.GONE);
-        }
-        listKos.setAdapter(adapter);
+        getUserData();
         addKos();
 
     }
@@ -73,29 +63,43 @@ public class OwnerActivity extends AppCompatActivity {
 
     }
 
-    private void getUserData(){
+    private void getUserData() {
 
-        database.child("kost").child(user.getUid()).child("detail").addValueEventListener(new ValueEventListener() {
+        database.child("kost").child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()){
-                    String nama = noteDataSnapshot.child("namaKost").getValue().toString();
-                    data.add(nama);
+                for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
+                    if (noteDataSnapshot.hasChild("detail")) {
+                        DataSnapshot snapshot=noteDataSnapshot.child("detail");
+                        for (DataSnapshot snap : snapshot.getChildren()) {
+                            kost = snap.getValue(Kost.class);
+                            data.add(kost);
+                        }
+                    } else if (noteDataSnapshot.hasChild("image/cover")) {
+                        DataSnapshot snap=noteDataSnapshot.child("image/cover");
+                        for (DataSnapshot snaps : snap.getChildren()) {
+                            for (DataSnapshot snapshot : snaps.getChildren()) {
+                                String name = snapshot.child("imglink").getValue().toString();
+                                image.add(name);
+                            }
+                        }
+                    }
                 }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getApplicationContext(), databaseError.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
-        database.child("kost").child(user.getUid()).child("image").child("cover").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()){
-                    String nama = noteDataSnapshot.child("imglink").getValue().toString();
-                    image.add(nama);
+                adapter = new OwnerAdapter(getApplicationContext(), data, image);
+                if (adapter.getItemCount() <= 0) {
+                    empty.setVisibility(View.VISIBLE);
+                    listKos.setVisibility(View.GONE);
+                    vLoading.setVisibility(View.GONE);
+                    loadingPrgress.setVisibility(View.GONE);
+                    Toast.makeText(getApplicationContext(),"Rk Sip",Toast.LENGTH_LONG).show();
+                } else {
+                    empty.setVisibility(View.GONE);
+                    listKos.setVisibility(View.VISIBLE);
+                    vLoading.setVisibility(View.GONE);
+                    loadingPrgress.setVisibility(View.GONE);
+                    Toast.makeText(getApplicationContext(),"Sip",Toast.LENGTH_LONG).show();
                 }
+                listKos.setAdapter(adapter);
             }
 
             @Override
@@ -110,11 +114,13 @@ public class OwnerActivity extends AppCompatActivity {
         fabAddKost = findViewById(R.id.fab_createKost);
         listKos = findViewById(R.id.list_kos);
         database = FirebaseDatabase.getInstance().getReference();
-        auth=FirebaseAuth.getInstance();
-        user=auth.getCurrentUser();
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
         data = new ArrayList<>();
         image = new ArrayList<>();
         empty = findViewById(R.id.empty_view);
-        progess=findViewById(R.id.loading);
+        loadingPrgress = findViewById(R.id.loading);
+        vLoading=findViewById(R.id.white_view);
     }
+
 }

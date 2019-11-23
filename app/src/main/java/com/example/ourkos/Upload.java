@@ -22,11 +22,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.security.acl.Owner;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -40,18 +38,16 @@ public class Upload extends AppCompatActivity {
     private final int MULTIPLE_IMAGE = 1;
     private final int SINGLE_IMAGE=2;
     private Uri ImageUri;
-    private String nama;
     private StorageReference storageReference;
     ArrayList<Uri> ImageList = new ArrayList<Uri>();
     Kost kost;
     private int uploadcount;
+    private String nama;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
         getSupportActionBar().hide();
-        Intent intent = getIntent();
-        nama = intent.getStringExtra("nama");
         initViews();
         progressBar.setVisibility(View.INVISIBLE);
         pilihFoto();
@@ -60,6 +56,8 @@ public class Upload extends AppCompatActivity {
         kelar();
     }
     private void initViews(){
+        Intent intent=getIntent();
+        nama=intent.getStringExtra("name");
         btnbangun=findViewById(R.id.btnbangun);
         btncover=findViewById(R.id.btncover);
         btnkamar=findViewById(R.id.btnkamar);
@@ -75,10 +73,13 @@ public class Upload extends AppCompatActivity {
         database=FirebaseDatabase.getInstance().getReference();
     }
     private void getUserData(){
-        database.child("kost").child(user.getUid()).child(nama).child("detail").addValueEventListener(new ValueEventListener() {
+        database.child("kost").child(user.getUid()).child("detail").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                kost = dataSnapshot.getValue(Kost.class);
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    kost = snapshot.getValue(Kost.class);
+                    kost.setKey(snapshot.getKey());
+                }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -129,7 +130,7 @@ public class Upload extends AppCompatActivity {
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
                 storage=FirebaseStorage.getInstance();
-                storageReference=storage.getReference().child("image").child(user.getUid()).child(kost.getNamaKost()).child("cover");
+                storageReference=storage.getReference().child("image").child(user.getUid()).child(kost.getKey()).child("cover");
                 for(uploadcount=0;uploadcount<ImageList.size();uploadcount++){
                     Uri oneImage=ImageList.get(uploadcount);
                     final StorageReference imageName=storageReference.child("imageBangunan" + uploadcount);
@@ -160,7 +161,7 @@ public class Upload extends AppCompatActivity {
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
                 storage=FirebaseStorage.getInstance();
-                storageReference=storage.getReference().child("image").child(user.getUid()).child(kost.getNamaKost()).child("bangunan");
+                storageReference=storage.getReference().child("image").child(user.getUid()).child(kost.getKey()).child("bangunan");
                 for(uploadcount=0;uploadcount<ImageList.size();uploadcount++){
                     Uri oneImage=ImageList.get(uploadcount);
                     final StorageReference imageName=storageReference.child("imageBangunan" + uploadcount);
@@ -191,7 +192,7 @@ public class Upload extends AppCompatActivity {
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
                 storage=FirebaseStorage.getInstance();
-                storageReference=storage.getReference().child("image").child(user.getUid()).child(kost.getNamaKost()).child("kamar");
+                storageReference=storage.getReference().child("image").child(user.getUid()).child(kost.getKey()).child("kamar");
                 for(uploadcount=0;uploadcount<ImageList.size();uploadcount++){
                     Uri oneImage=ImageList.get(uploadcount);
                     final StorageReference imageName=storageReference.child("imageKamar" + uploadcount);
@@ -222,7 +223,7 @@ public class Upload extends AppCompatActivity {
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
                 storage=FirebaseStorage.getInstance();
-                storageReference=storage.getReference().child("image").child(user.getUid()).child(kost.getNamaKost()).child("kamarmandi");
+                storageReference=storage.getReference().child("image").child(user.getUid()).child(kost.getKey()).child("kamarmandi");
                 for(uploadcount=0;uploadcount<ImageList.size();uploadcount++){
                     Uri oneImage=ImageList.get(uploadcount);
                     final StorageReference imageName=storageReference.child("imageKamarmandi" + uploadcount);
@@ -253,7 +254,7 @@ public class Upload extends AppCompatActivity {
         HashMap<String,String> imag=new HashMap<>();
         imag.put("imglink",Url);
 
-        database.child("kost").child(user.getUid()).child(kost.getNamaKost()).child("image").child(folder).push().setValue(imag);
+        database.child("kost").child(user.getUid()).child("image").child(folder).child(kost.getKey()).push().setValue(imag);
         Toast.makeText(this,"Upload Success",Toast.LENGTH_LONG).show();
         ImageList.clear();
         progressBar.setVisibility(View.INVISIBLE);

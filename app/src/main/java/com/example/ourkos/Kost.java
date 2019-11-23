@@ -11,6 +11,14 @@ public class Kost {
     public int hargatahunan;
     public String region;
     public String jenis;
+    public String key;
+
+    public String getKey(){
+        return key;
+    }
+    public void setKey(String key){
+        this.key=key;
+    }
 
     public Kost() {
 

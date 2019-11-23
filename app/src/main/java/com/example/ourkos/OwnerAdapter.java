@@ -12,10 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> {
-    private ArrayList<String> data;
+    private ArrayList<Kost> data;
     private ArrayList<String> img;
     private Context context;
-    public OwnerAdapter(Context context, ArrayList<String> input,ArrayList<String> imag){
+    public OwnerAdapter(Context context, ArrayList<Kost> input,ArrayList<String> imag){
         this.data=input;
         this.img=imag;
         this.context=context;
@@ -43,7 +43,7 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - mengambil elemen dari dataset (ArrayList) pada posisi tertentu
         // - mengeset isi view dengan elemen dari dataset tersebut
-        holder.txtnama.setText(data.get(position));
+        holder.txtnama.setText(data.get(position).getNamaKost());
         Glide.with(context).load(img.get(position)).into(holder.imgfoto);
     }
 

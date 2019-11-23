@@ -109,7 +109,6 @@ public class FirebaseDBCreateKostActivity extends AppCompatActivity {
                     progressBar.setVisibility(View.VISIBLE);
                     writeToDB(nama,alamat,jenis,region,hari,minggu,bulan,tahun,stock);
                     Intent intent = new Intent(FirebaseDBCreateKostActivity.this,Upload.class);
-                    intent.putExtra("nama",nama);
                     startActivity(intent);
                 }
             }
@@ -117,6 +116,6 @@ public class FirebaseDBCreateKostActivity extends AppCompatActivity {
     }
     private void writeToDB(String nama, String alamat, String jenis,String region,int hari,int minggu, int bulan,int tahun,int stock){
         Kost kost = new Kost(nama,alamat,stock,bulan,hari,minggu,tahun,region,jenis);
-        database.child("kost").child(user.getUid()).child(nama).child("detail").setValue(kost);
+        database.child("kost").child(user.getUid()).child("detail").push().setValue(kost);
     }
 }

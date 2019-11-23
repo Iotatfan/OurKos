@@ -6,12 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".OwnerActivity">
-    <ProgressBar
-        android:id="@+id/loading"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        style="@style/Widget.AppCompat.ProgressBar"
-        android:indeterminate="true"></ProgressBar>
 
 
     <RelativeLayout
@@ -47,6 +41,25 @@
             android:clickable="true"
             android:focusable="true">
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
+        <View
+            android:id="@+id/vpemilik"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/shadow"
+            android:visibility="gone">
+        </View>
+        <View
+            android:id="@+id/white_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/pureWhite"/>
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:indeterminate="true"></ProgressBar>
 
     </RelativeLayout>
 
