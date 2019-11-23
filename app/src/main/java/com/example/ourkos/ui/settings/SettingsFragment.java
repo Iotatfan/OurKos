@@ -67,6 +67,9 @@ public class SettingsFragment extends Fragment {
         vLoading = root.findViewById(R.id.white_view);
         loadingPrgress = root.findViewById(R.id.loading);
 
+        vLoading.setVisibility(View.VISIBLE);
+        loadingPrgress.setVisibility(View.VISIBLE);
+
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         database = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());

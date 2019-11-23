@@ -43,6 +43,7 @@ public class Upload extends AppCompatActivity {
     Kost kost;
     private int uploadcount;
     private String nama;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -55,23 +56,25 @@ public class Upload extends AppCompatActivity {
         uploadFoto();
         kelar();
     }
+
     private void initViews(){
-        Intent intent=getIntent();
-        nama=intent.getStringExtra("name");
-        btnbangun=findViewById(R.id.btnbangun);
-        btncover=findViewById(R.id.btncover);
-        btnkamar=findViewById(R.id.btnkamar);
-        btnmandi=findViewById(R.id.btnmandi);
-        btnselesai=findViewById(R.id.btn_selesai);
-        upload=findViewById(R.id.btnupload1);
-        upload2=findViewById(R.id.btnupload2);
-        upload3=findViewById(R.id.btnupload3);
-        upload4=findViewById(R.id.btnupload4);
-        auth=FirebaseAuth.getInstance();
-        user=auth.getCurrentUser();
-        progressBar=findViewById(R.id.progressBar1);
-        database=FirebaseDatabase.getInstance().getReference();
+        Intent intent = getIntent();
+        nama = intent.getStringExtra("name");
+        btnbangun = findViewById(R.id.btnbangun);
+        btncover = findViewById(R.id.btncover);
+        btnkamar = findViewById(R.id.btnkamar);
+        btnmandi = findViewById(R.id.btnmandi);
+        btnselesai = findViewById(R.id.btn_selesai);
+        upload = findViewById(R.id.btnupload1);
+        upload2 = findViewById(R.id.btnupload2);
+        upload3 = findViewById(R.id.btnupload3);
+        upload4 = findViewById(R.id.btnupload4);
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        progressBar = findViewById(R.id.progressBar1);
+        database = FirebaseDatabase.getInstance().getReference();
     }
+
     private void getUserData(){
         database.child("kost").child(user.getUid()).child("detail").addValueEventListener(new ValueEventListener() {
             @Override
@@ -87,6 +90,7 @@ public class Upload extends AppCompatActivity {
             }
         });
     }
+
     private void pilihFoto(){
         btncover.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +103,7 @@ public class Upload extends AppCompatActivity {
         btnbangun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Intent.ACTION_GET_CONTENT);
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
                 intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE,true);
                 startActivityForResult(intent,MULTIPLE_IMAGE);
@@ -108,7 +112,7 @@ public class Upload extends AppCompatActivity {
         btnkamar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Intent.ACTION_GET_CONTENT);
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
                 intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE,true);
                 startActivityForResult(intent,MULTIPLE_IMAGE);
@@ -117,7 +121,7 @@ public class Upload extends AppCompatActivity {
         btnmandi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Intent.ACTION_GET_CONTENT);
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
                 intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE,true);
                 startActivityForResult(intent,MULTIPLE_IMAGE);
@@ -129,8 +133,8 @@ public class Upload extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
-                storage=FirebaseStorage.getInstance();
-                storageReference=storage.getReference().child("image").child(user.getUid()).child(kost.getKey()).child("cover");
+                storage = FirebaseStorage.getInstance();
+                storageReference = storage.getReference().child("image").child(user.getUid()).child(kost.getKey()).child("cover");
                 for(uploadcount=0;uploadcount<ImageList.size();uploadcount++){
                     Uri oneImage=ImageList.get(uploadcount);
                     final StorageReference imageName=storageReference.child("imageBangunan" + uploadcount);
@@ -171,7 +175,7 @@ public class Upload extends AppCompatActivity {
                             imageName.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
-                                    String Url =String.valueOf(uri);
+                                    String Url = String.valueOf(uri);
                                     String folder = "bangunan";
                                     StoreLink(Url,folder);
                                 }
@@ -251,7 +255,7 @@ public class Upload extends AppCompatActivity {
         });
     }
     private void StoreLink(String Url,String folder){
-        HashMap<String,String> imag=new HashMap<>();
+        HashMap<String,String> imag = new HashMap<>();
         imag.put("imglink",Url);
         if(folder.equals("cover")){
             database.child("kost").child(user.getUid()).child("image").child(folder).child(kost.getKey()).child(kost.getKey()).setValue(imag);
@@ -269,29 +273,31 @@ public class Upload extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Upload.this, OwnerActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
         super.onActivityResult(requestCode,resultCode,data);
-        if(requestCode == SINGLE_IMAGE && resultCode == RESULT_OK && data != null && data.getData()!=null){
-            ImageUri =data.getData();
+        if(requestCode == SINGLE_IMAGE && resultCode == RESULT_OK && data != null && data.getData()!= null){
+            ImageUri = data.getData();
+            String test = ImageUri.toString();
             ImageList.add(ImageUri);
-            Toast.makeText(this,"Choose Success",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,test,Toast.LENGTH_LONG).show();
         }
-        else if(requestCode==MULTIPLE_IMAGE && resultCode == RESULT_OK && data!=null && data.getClipData()!=null){
+        else if(requestCode == MULTIPLE_IMAGE && resultCode == RESULT_OK && data!=null && data.getClipData()!= null){
             int count = data.getClipData().getItemCount();
-            int currentcount=0;
+            int currentcount = 0;
             while(currentcount < count){
-                ImageUri=data.getClipData().getItemAt(currentcount).getUri();
+                ImageUri = data.getClipData().getItemAt(currentcount).getUri();
                 ImageList.add(ImageUri);
                 currentcount = currentcount + 1 ;
             }
             Toast.makeText(this,"Choose Success",Toast.LENGTH_LONG).show();
         }
-        else if(requestCode == MULTIPLE_IMAGE && resultCode ==RESULT_OK && data != null && data.getData()!=null){
-            ImageUri =data.getData();
+        else if(requestCode == MULTIPLE_IMAGE && resultCode ==RESULT_OK && data != null && data.getData()!= null){
+            ImageUri = data.getData();
             ImageList.add(ImageUri);
             Toast.makeText(this,"Choose Success",Toast.LENGTH_LONG).show();
         }

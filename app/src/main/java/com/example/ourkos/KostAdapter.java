@@ -9,14 +9,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.core.app.ActivityCompat;
-
 import java.util.List;
 
 public class KostAdapter extends ArrayAdapter<Kost> {
+
     List<Kost> listKost;
     Context context;
     int layout;
+
     private static class KostHolder{
         ImageView image;
         TextView txtnama;
