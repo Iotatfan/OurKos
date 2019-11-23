@@ -81,10 +81,11 @@ public class FirebaseDBCreateKostActivity extends AppCompatActivity {
                 String alamat = edtAlamat.getText().toString();
                 String jenis = spinnerJenis.getText().toString();
                 String region = spinnerRegion.getText().toString();
-                String haris = edtHargaH.getText().toString();
-                String minggus = (edtHargaM.getText().toString());
-                String bulans = (edtHargaB.getText().toString());
-                String tahuns = (edtHargaT.getText().toString());
+                String haris = edtHargaH.getText().toString().replaceAll("[^0-9]", "");
+                String minggus = (edtHargaM.getText().toString()).replaceAll("[^0-9]", "");
+                String bulans = (edtHargaB.getText().toString()).replaceAll("[^0-9]", "");
+                String tahuns = (edtHargaT.getText().toString()).replaceAll("[^0-9]", "");
+                System.out.println(haris);
                 String stocks = (edtStock.getText().toString());
 
                 if(nama.isEmpty()){
