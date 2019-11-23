@@ -254,6 +254,7 @@ public class Upload extends AppCompatActivity {
             }
         });
     }
+
     private void StoreLink(String Url,String folder){
         HashMap<String,String> imag = new HashMap<>();
         imag.put("imglink",Url);
@@ -267,6 +268,7 @@ public class Upload extends AppCompatActivity {
         ImageList.clear();
         progressBar.setVisibility(View.INVISIBLE);
     }
+
     private void kelar(){
         btnselesai.setOnClickListener(new View.OnClickListener() {
             @Override

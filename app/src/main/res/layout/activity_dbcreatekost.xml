@@ -214,7 +214,7 @@
                     android:id="@+id/btn_lanjut"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_btn"
+                    android:background="@drawable/ripple_button"
                     android:textColor="@color/pureWhite"
                     android:text="Selanjutnya" />
 

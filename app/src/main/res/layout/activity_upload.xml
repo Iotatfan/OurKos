@@ -96,11 +96,6 @@
                             android:layout_height="match_parent"
                             android:layout_weight="0.5">
 
-                            <ImageView
-                                android:id="@+id/coverImage"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"/>
-
                             <Button
                                 android:id="@+id/btncover"
                                 android:layout_width="match_parent"
@@ -120,7 +115,7 @@
                             android:layout_marginLeft="5dp"
                             android:text="Upload Foto"
                             android:gravity="center"
-                            android:background="@drawable/rounded_btn"
+                            android:background="@drawable/ripple_button"
                             android:textColor="@color/pureWhite"
                             android:layout_weight="0.5" />
 
@@ -182,7 +177,7 @@
                             android:layout_marginStart="5dp"
                             android:text="Upload Foto"
                             android:gravity="center"
-                            android:background="@drawable/rounded_btn"
+                            android:background="@drawable/ripple_button"
                             android:textColor="@color/pureWhite"
                             android:layout_weight="0.5" />
                     </LinearLayout>
@@ -243,7 +238,7 @@
                             android:layout_marginStart="5dp"
                             android:text="Upload Foto"
                             android:gravity="center"
-                            android:background="@drawable/rounded_btn"
+                            android:background="@drawable/ripple_button"
                             android:textColor="@color/pureWhite"
                             android:layout_weight="0.5" />
 
@@ -284,6 +279,7 @@
                             android:text="Tambah beberapa foto yang mewakili kamar mandi kos"/>
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -305,7 +301,7 @@
                             android:layout_marginStart="5dp"
                             android:text="Upload Foto"
                             android:gravity="center"
-                            android:background="@drawable/rounded_btn"
+                            android:background="@drawable/ripple_button"
                             android:textColor="@color/pureWhite"
                             android:layout_weight="0.5" />
 
@@ -317,7 +313,7 @@
                     android:id="@+id/btn_selesai"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_btn"
+                    android:background="@drawable/ripple_button"
                     android:textColor="@color/pureWhite"
                     android:text="Selesai" />
 

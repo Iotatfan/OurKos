@@ -2,7 +2,6 @@ package com.example.ourkos;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -50,7 +49,6 @@ public class OwnerActivity extends AppCompatActivity {
         listKos.setLayoutManager(layoutManager);
         getUserData();
         addKos();
-
     }
 
     private void addKos() {
@@ -70,7 +68,7 @@ public class OwnerActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 DataSnapshot noteDataSnapshot = dataSnapshot.child("detail");
-                DataSnapshot noteDataSnapshots= dataSnapshot.child("image/cover");
+                DataSnapshot noteDataSnapshots = dataSnapshot.child("image/cover");
                 if (noteDataSnapshot.exists() && noteDataSnapshots.exists()) {
                     for (DataSnapshot snap : noteDataSnapshot.getChildren()) {
                         kost = snap.getValue(Kost.class);
@@ -117,7 +115,7 @@ public class OwnerActivity extends AppCompatActivity {
         image = new ArrayList<>();
         empty = findViewById(R.id.empty_view);
         loadingPrgress = findViewById(R.id.loading);
-        vLoading=findViewById(R.id.white_view);
+        vLoading = findViewById(R.id.white_view);
     }
 
 }

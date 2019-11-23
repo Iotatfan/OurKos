@@ -8,10 +8,14 @@
     card_view:cardBackgroundColor="@color/pureWhite"
     card_view:cardCornerRadius="3dp"
     card_view:cardElevation="2.5dp">
+
     <LinearLayout
+        android:id="@+id/parentLayout"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <ImageView
             android:id="@+id/fotok"
             android:layout_width="wrap_content"
@@ -19,6 +23,7 @@
             android:layout_marginTop="25dp"
             android:layout_gravity="left"
             android:contentDescription="@string/app_name"/>
+
         <TextView
             android:id="@+id/namak"
             android:layout_width="fill_parent"
@@ -27,5 +32,7 @@
             android:textStyle="bold"
             android:textColor="@color/pureBlack"
             android:layout_height="wrap_content"/>
+
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>
