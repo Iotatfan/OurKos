@@ -15,8 +15,8 @@
         android:layout_marginTop="10dp">
         <ImageView
             android:id="@+id/foto"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_marginTop="30dp"
             android:layout_gravity="left"
             android:contentDescription="@string/app_name"/>

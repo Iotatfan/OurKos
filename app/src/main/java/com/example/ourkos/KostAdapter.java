@@ -1,63 +1,67 @@
 package com.example.ourkos;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.bumptech.glide.Glide;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class KostAdapter extends ArrayAdapter<Kost> {
-
-    List<Kost> listKost;
-    Context context;
-    int layout;
-
-    private static class KostHolder{
-        ImageView image;
-        TextView txtnama;
-        TextView txtalamat;
-        TextView txtstock;
-        TextView txtharga;
-        TextView txtjenis;
-    }
-    public KostAdapter(Context context,int layout,List<Kost> listKost){
-        super(context,layout,listKost);
+public class KostAdapter extends RecyclerView.Adapter<KostAdapter.ViewHolder> {
+    private List<Kost> data;
+    private List<String> img;
+    private Context context;
+    public KostAdapter(Context context, List<Kost> input,List<String> imag){
+        this.data=input;
+        this.img=imag;
         this.context=context;
-        this.layout=layout;
-        this.listKost=listKost;
+    }
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        public TextView txtnama;
+        public TextView txtalamat;
+        public TextView txtharga;
+        public TextView txtstock;
+        public TextView txtjenis;
+        public ImageView imgfoto;
+
+        public ViewHolder(View v){
+            super(v);
+            txtnama=(TextView)v.findViewById(R.id.namakost);
+            txtalamat=(TextView)v.findViewById(R.id.alamatkost);
+            txtharga=(TextView)v.findViewById(R.id.hargakost);
+            txtstock=(TextView)v.findViewById(R.id.stockkost);
+            txtjenis=(TextView)v.findViewById(R.id.jeniskost);
+            imgfoto=(ImageView)v.findViewById(R.id.foto);
+        }
+    }
+    @Override
+    public KostAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        // membuat view baru
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_search, parent, false);
+        // mengeset ukuran view, margin, padding, dan parameter layout lainnya
+        ViewHolder vh = new ViewHolder(v);
+        return vh;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent){
-        View root=convertView;
-        KostHolder holder;
-        if(root==null){
-            LayoutInflater v1=((Activity)context).getLayoutInflater();
-            root=v1.inflate(layout,parent,false);
-            holder= new KostHolder();
-            holder.image=(ImageView)root.findViewById(R.id.foto);
-            holder.txtnama=(TextView)root.findViewById(R.id.namakost);
-            holder.txtalamat=(TextView)root.findViewById(R.id.alamatkost);
-            holder.txtstock=(TextView)root.findViewById(R.id.stockkost);
-            holder.txtharga=(TextView)root.findViewById(R.id.hargakost);
-            holder.txtjenis=(TextView)root.findViewById(R.id.jeniskost);
-            root.setTag(holder);
-        }
-        else{
-            holder=(KostHolder)root.getTag();
-        }
-        Kost kost=listKost.get(position);
-//        holder.image.setImageResource(kost.getImage());
-        holder.txtnama.setText(kost.getNamaKost());
-        holder.txtalamat.setText(kost.getAlamat());
-        holder.txtharga.setText("Rp." + kost.getHargabulanan());
-        holder.txtstock.setText("Ruangan tersisa : " + String.valueOf(kost.getStock()));
-        holder.txtjenis.setText(kost.getJenis());
-        return root;
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        // - mengambil elemen dari dataset (ArrayList) pada posisi tertentu
+        // - mengeset isi view dengan elemen dari dataset tersebut
+        holder.txtnama.setText(data.get(position).getNamaKost());
+        holder.txtalamat.setText(data.get(position).getAlamat());
+        holder.txtstock.setText("Ruangan tersisa : " + data.get(position).getStock());
+        holder.txtharga.setText("Rp. " + data.get(position).getHargabulanan());
+        holder.txtjenis.setText(data.get(position).getJenis());
+        Glide.with(context).load(img.get(position)).into(holder.imgfoto);
+    }
+
+    @Override
+    public int getItemCount() {
+        // menghitung ukuran dataset / jumlah data yang ditampilkan di RecyclerView
+        return data.size();
     }
 }

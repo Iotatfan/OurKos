@@ -132,6 +132,8 @@ public class FirebaseDBCreateKostActivity extends AppCompatActivity {
 
     private void writeToDB(String nama, String alamat, String jenis,String region,int hari,int minggu, int bulan,int tahun,int stock){
         Kost kost = new Kost(nama,alamat,stock,bulan,hari,minggu,tahun,region,jenis);
+        String key = database.child("kost").child(user.getUid()).child("detail").push().getKey();
+        kost.setKey(key);
         database.child("kost").child(user.getUid()).child("detail").push().setValue(kost);
     }
 }

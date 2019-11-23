@@ -118,6 +118,8 @@ public class OwnerActivity extends AppCompatActivity {
         empty = findViewById(R.id.empty_view);
         loadingPrgress = findViewById(R.id.loading);
         vLoading=findViewById(R.id.white_view);
+        vLoading.setVisibility(View.VISIBLE);
+        loadingPrgress.setVisibility(View.VISIBLE);
     }
 
 }
