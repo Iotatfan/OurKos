@@ -87,13 +87,18 @@ public class SettingsFragment extends Fragment {
                     imagePemilik.setVisibility(View.VISIBLE);
                     vPemilk.setVisibility(View.VISIBLE);
                     kos.setVisibility(View.VISIBLE);
-
                     vLoading.setVisibility(View.GONE);
                     loadingPrgress.setVisibility(View.GONE);
-
 //                    Toast.makeText(getActivity().getApplicationContext(), "Masuk", Toast.LENGTH_LONG).show();
                 }
-
+                else{
+                    pemilikBtn.setVisibility(View.GONE);
+                    imagePemilik.setVisibility(View.GONE);
+                    vPemilk.setVisibility(View.GONE);
+                    kos.setVisibility(View.GONE);
+                    vLoading.setVisibility(View.GONE);
+                    loadingPrgress.setVisibility(View.GONE);
+                }
             }
 
             @Override
