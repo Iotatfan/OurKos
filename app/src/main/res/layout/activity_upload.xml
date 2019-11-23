@@ -91,20 +91,28 @@
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
-                        <ImageView
+                        <RelativeLayout
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            weig/>
+                            android:layout_weight="0.5">
 
-                        <Button
-                            android:id="@+id/btncover"
-                            android:layout_width="0dp"
-                            android:layout_height="90dp"
-                            android:text="Tambah Foto"
-                            android:gravity="center"
-                            android:background="@drawable/custom_button"
-                            android:textColor="@color/bg_color"
-                            android:layout_weight="0.5" />
+                            <ImageView
+                                android:id="@+id/coverImage"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"/>
+
+                            <Button
+                                android:id="@+id/btncover"
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:text="Tambah Foto"
+                                android:gravity="center"
+                                android:background="@drawable/custom_button"
+                                android:textColor="@color/bg_color" />
+
+                        </RelativeLayout>
+
+
                         <Button
                             android:id="@+id/btnupload1"
                             android:layout_width="0dp"
