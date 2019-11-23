@@ -52,14 +52,16 @@
             android:id="@+id/white_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/pureWhite"/>
+            android:background="@color/pureWhite"
+            android:visibility="gone"/>
 
         <ProgressBar
             android:id="@+id/loading"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             style="@style/Widget.AppCompat.ProgressBar"
-            android:indeterminate="true"></ProgressBar>
+            android:indeterminate="true"
+            android:visibility="gone"/>
 
     </RelativeLayout>
 

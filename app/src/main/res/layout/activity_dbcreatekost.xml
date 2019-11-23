@@ -21,6 +21,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -38,6 +39,7 @@
                 />
 
         </LinearLayout>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -50,21 +52,39 @@
                 android:layout_marginLeft="18dp"
                 android:layout_marginRight="18dp"
                 android:orientation="vertical">
-                <EditText
-                    android:id="@+id/etnama"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Nama Kos"
-                    android:textColorHint="@color/pureBlack"
-                    android:inputType="text" />
 
-                <EditText
-                    android:id="@+id/etalamat"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayoutNama"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Alamat Kos"
-                    android:textColorHint="@color/pureBlack"
-                    android:inputType="text" />
+                    app:errorEnabled="true"
+                    android:textColorHint="@color/pureBlack">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextNama"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Nama"
+                        android:textColor="@color/pureBlack"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayoutAlamat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:errorEnabled="true"
+                    android:textColorHint="@color/pureBlack">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextAlamat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Alamat"
+                        android:textColor="@color/pureBlack"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -102,51 +122,106 @@
                         />
 
                 </LinearLayout>
-                <EditText
-                    android:id="@+id/etstock"
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayoutStock"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Jumlah Kamar yang kosong"
-                    android:inputType="number"
-                    android:textColorHint="@color/pureBlack" />
-                <EditText
-                    android:id="@+id/ethari"
+                    app:errorEnabled="true"
+                    android:textColorHint="@color/pureBlack">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextStock"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Jumlah Kamar Yang Kosong"
+                        android:inputType="numberDecimal"
+                        android:textColor="@color/pureBlack"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayoutHarian"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Harga Kos Per Hari"
-                    android:inputType="number"
-                    android:textColorHint="@color/pureBlack" />
-                <EditText
-                    android:id="@+id/etminggu"
+                    app:errorEnabled="true"
+                    android:textColorHint="@color/pureBlack">
+
+                    <me.abhinay.input.CurrencyEditText
+                        android:id="@+id/editTextHarian"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:hint="Harga Kos Per Hari"
+                        android:textColor="@color/bg_color_dark"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayoutMingguan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Harga Kos Per Minggu"
-                    android:inputType="number"
-                    android:textColorHint="@color/pureBlack" />
-                <EditText
-                    android:id="@+id/etbulan"
+                    app:errorEnabled="true"
+                    android:textColorHint="@color/pureBlack">
+
+                    <me.abhinay.input.CurrencyEditText
+                        android:id="@+id/editTextMingguan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:hint="Harga Kos Per Minggu"
+                        android:textColor="@color/bg_color_dark"/>
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayoutBulanan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Harga Kos Per Bulan"
-                    android:inputType="number"
-                    android:textColorHint="@color/pureBlack" />
-                <EditText
-                    android:id="@+id/ettahun"
+                    app:errorEnabled="true"
+                    android:textColorHint="@color/pureBlack">
+
+                    <me.abhinay.input.CurrencyEditText
+                        android:id="@+id/editTextBulanan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:hint="Harga Kos Per Bulanan"
+                        android:textColor="@color/bg_color_dark"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayoutTahunan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Harga Kos Per Tahun"
-                    android:inputType="number"
-                    android:textColorHint="@color/pureBlack" />
+                    app:errorEnabled="true"
+                    android:textColorHint="@color/pureBlack">
+
+                    <me.abhinay.input.CurrencyEditText
+                        android:id="@+id/editTextTahunan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:hint="Harga Kos Per Tahun"
+                        android:textColor="@color/bg_color_dark"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
                 <Button
                     android:id="@+id/btn_lanjut"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/button_rounded"
+                    android:background="@drawable/rounded_btn"
                     android:textColor="@color/pureWhite"
                     android:text="Selanjutnya" />
+
             </LinearLayout>
 
         </ScrollView>
 
     </RelativeLayout>
+
 </androidx.appcompat.widget.LinearLayoutCompat>
