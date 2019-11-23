@@ -2,6 +2,7 @@ package com.example.ourkos;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -68,20 +69,17 @@ public class OwnerActivity extends AppCompatActivity {
         database.child("kost").child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
-                    if (noteDataSnapshot.hasChild("detail")) {
-                        DataSnapshot snapshot=noteDataSnapshot.child("detail");
-                        for (DataSnapshot snap : snapshot.getChildren()) {
-                            kost = snap.getValue(Kost.class);
-                            data.add(kost);
-                        }
-                    } else if (noteDataSnapshot.hasChild("image/cover")) {
-                        DataSnapshot snap=noteDataSnapshot.child("image/cover");
-                        for (DataSnapshot snaps : snap.getChildren()) {
-                            for (DataSnapshot snapshot : snaps.getChildren()) {
-                                String name = snapshot.child("imglink").getValue().toString();
-                                image.add(name);
-                            }
+                DataSnapshot noteDataSnapshot = dataSnapshot.child("detail");
+                DataSnapshot noteDataSnapshots= dataSnapshot.child("image/cover");
+                if (noteDataSnapshot.exists() && noteDataSnapshots.exists()) {
+                    for (DataSnapshot snap : noteDataSnapshot.getChildren()) {
+                        kost = snap.getValue(Kost.class);
+                        data.add(kost);
+                    }
+                    for (DataSnapshot snaps : noteDataSnapshots.getChildren()) {
+                        for (DataSnapshot snapshot : snaps.getChildren()) {
+                            String name = snapshot.child("imglink").getValue().toString();
+                            image.add(name);
                         }
                     }
                 }
@@ -91,13 +89,12 @@ public class OwnerActivity extends AppCompatActivity {
                     listKos.setVisibility(View.GONE);
                     vLoading.setVisibility(View.GONE);
                     loadingPrgress.setVisibility(View.GONE);
-                    Toast.makeText(getApplicationContext(),"Rk Sip",Toast.LENGTH_LONG).show();
-                } else {
+                }
+                else{
                     empty.setVisibility(View.GONE);
                     listKos.setVisibility(View.VISIBLE);
                     vLoading.setVisibility(View.GONE);
                     loadingPrgress.setVisibility(View.GONE);
-                    Toast.makeText(getApplicationContext(),"Sip",Toast.LENGTH_LONG).show();
                 }
                 listKos.setAdapter(adapter);
             }

@@ -31,7 +31,7 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
         }
     }
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public OwnerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // membuat view baru
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_owner, parent, false);
         // mengeset ukuran view, margin, padding, dan parameter layout lainnya

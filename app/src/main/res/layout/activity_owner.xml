@@ -42,13 +42,6 @@
             android:focusable="true">
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
         <View
-            android:id="@+id/vpemilik"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@color/shadow"
-            android:visibility="gone">
-        </View>
-        <View
             android:id="@+id/white_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
