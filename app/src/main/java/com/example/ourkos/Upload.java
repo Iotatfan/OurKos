@@ -257,8 +257,12 @@ public class Upload extends AppCompatActivity {
     private void StoreLink(String Url,String folder){
         HashMap<String,String> imag = new HashMap<>();
         imag.put("imglink",Url);
-
-        database.child("kost").child(user.getUid()).child("image").child(folder).child(kost.getKey()).push().setValue(imag);
+        if(folder.equals("cover")){
+            database.child("kost").child(user.getUid()).child("image").child(folder).child(kost.getKey()).child(kost.getKey()).setValue(imag);
+        }
+        else{
+            database.child("kost").child(user.getUid()).child("image").child(folder).child(kost.getKey()).push().setValue(imag);
+        }
         Toast.makeText(this,"Upload Success",Toast.LENGTH_LONG).show();
         ImageList.clear();
         progressBar.setVisibility(View.INVISIBLE);
