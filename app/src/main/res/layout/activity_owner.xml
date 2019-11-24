@@ -16,7 +16,10 @@
             android:id="@+id/list_kos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="visible">
+            android:visibility="visible"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground">
 
         </androidx.recyclerview.widget.RecyclerView>
 

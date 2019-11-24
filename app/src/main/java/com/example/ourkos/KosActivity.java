@@ -12,9 +12,12 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class KosActivity extends AppCompatActivity {
 
-    private TextView hargaHarian, hargaBulanan, hargaTahunan, luasKamar;
+    private TextView textViewhargaHarian, textViewhargaBulanan, textViewhargaTahunan, textViewluasKamar;
     private AppCompatTextView textViewNama;
     private ImageView yesListrik, yesAir, yesAC, yesWifi, yesKasur, yesDalam;
     private ImageView noListrik, noAir, noAc, noWifi, noKasur, noDalam;
@@ -33,9 +36,9 @@ public class KosActivity extends AppCompatActivity {
     private void initView(){
 
         textViewNama = findViewById(R.id.namaKos);
-        hargaHarian = findViewById(R.id.harga_harian);
-        hargaBulanan = findViewById(R.id.harga_bulanan);
-        hargaTahunan = findViewById(R.id.harga_tahunan);
+        textViewhargaHarian = findViewById(R.id.harga_harian);
+        textViewhargaBulanan = findViewById(R.id.harga_bulanan);
+        textViewhargaTahunan = findViewById(R.id.harga_tahunan);
 
         yesAC = findViewById(R.id.okAC);
         yesAir = findViewById(R.id.okAir);
@@ -58,11 +61,20 @@ public class KosActivity extends AppCompatActivity {
 
     private void getKosData(){
 
+        Locale localeID = new Locale("in", "ID");
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+
         Intent kos = getIntent();
         String namaKos = kos.getStringExtra("name");
+        int hargaHarian = kos.getIntExtra("hargaHarian", 0);
+        int hargaMingguan = kos.getIntExtra("hargaMingguan", 0);
+        int hargaBulanan = kos.getIntExtra("hargaBulanan", 0);
+        int hargaTahunan = kos.getIntExtra("hargaTahunan", 0);
 
         textViewNama.setText(namaKos);
+        textViewhargaHarian.setText(formatRupiah.format( hargaHarian ));
+        textViewhargaBulanan.setText(formatRupiah.format( hargaBulanan ));
+        textViewhargaTahunan.setText(formatRupiah.format( hargaTahunan ));
     }
-
 
 }

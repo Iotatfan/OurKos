@@ -27,7 +27,7 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView txtnama;
+        public TextView txtnama, alamaat, region;
         public ImageView imgfoto;
         public LinearLayout parentLayout;
 
@@ -35,6 +35,8 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
             super(v);
             txtnama = v.findViewById(R.id.namak);
             imgfoto = v.findViewById(R.id.fotok);
+            alamaat = v.findViewById(R.id.alamatKos);
+            region = v.findViewById(R.id.regiotKos);
             parentLayout = v.findViewById(R.id.parentLayout);
         }
     }
@@ -54,6 +56,8 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
         // - mengeset isi view dengan elemen dari dataset tersebut
 
         holder.txtnama.setText(data.get(position).getNamaKost());
+        holder.alamaat.setText(data.get(position).getAlamat());
+        holder.region.setText(data.get(position).getRegion());
         Glide.with(context).load(img.get(position)).into(holder.imgfoto);
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
