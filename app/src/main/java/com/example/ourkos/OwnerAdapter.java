@@ -52,8 +52,6 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        // - mengambil elemen dari dataset (ArrayList) pada posisi tertentu
-        // - mengeset isi view dengan elemen dari dataset tersebut
 
         holder.txtnama.setText(data.get(position).getNamaKost());
         holder.alamaat.setText(data.get(position).getAlamat());
@@ -70,6 +68,7 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
                 intent.putExtra("hargaMingguan", data.get(position).getHargamingguan());
                 intent.putExtra("hargaBulanan", data.get(position).getHargabulanan());
                 intent.putExtra("hargaTahunan", data.get(position).getHargatahunan());
+                intent.putExtra("stokKamar", data.get(position).getStock());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }
