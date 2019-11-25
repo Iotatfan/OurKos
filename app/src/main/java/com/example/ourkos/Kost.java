@@ -28,31 +28,51 @@ public class Kost {
         this.namaKost = namaKost;
         this.alamat = alamat;
         this.stock = stock;
-        this.hargabulanan=hargab;
-        this.hargaharian=hargah;
-        this.hargamingguan=hargam;
-        this.hargatahunan=hargat;
-        this.region=region;
-        this.jenis=jenis;
+        this.hargabulanan = hargab;
+        this.hargaharian = hargah;
+        this.hargamingguan = hargam;
+        this.hargatahunan = hargat;
+        this.region = region;
+        this.jenis = jenis;
+    }
+
+    public int getHargaharian() {
+        return hargaharian;
+    }
+
+    public int getHargamingguan() {
+        return hargamingguan;
     }
 
     public int getStock() {
+
         return stock;
     }
 
     public String getNamaKost() {
+
         return namaKost;
     }
 
     public String getAlamat() {
+
         return alamat;
     }
+
     public int getHargabulanan(){
+
         return hargabulanan;
     }
+    public int getHargatahunan(){
+
+        return hargatahunan;
+    }
+
     public String getJenis(){
+
         return jenis;
     }
+
     public String getRegion(){
         return region;
     }

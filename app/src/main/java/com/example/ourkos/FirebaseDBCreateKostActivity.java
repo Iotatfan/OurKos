@@ -125,6 +125,7 @@ public class FirebaseDBCreateKostActivity extends AppCompatActivity {
                     writeToDB(nama,alamat,jenis,region,hari,minggu,bulan,tahun,stock);
                     Intent intent = new Intent(FirebaseDBCreateKostActivity.this,Upload.class);
                     startActivity(intent);
+                    finish();
                 }
             }
         });

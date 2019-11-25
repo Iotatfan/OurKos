@@ -93,8 +93,8 @@ public class LoginActivity extends AppCompatActivity {
                                         bundle.putString("email", email);
                                         bundle.putString("password", password);
                                         startActivity(new Intent(LoginActivity.this, MainActivity.class).putExtra("emailpassword", bundle));
-                                        mProgress.setVisibility(View.INVISIBLE);
                                         finish();
+                                        mProgress.setVisibility(View.INVISIBLE);
                                     }
                                 }
                             });

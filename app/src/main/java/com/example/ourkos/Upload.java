@@ -136,15 +136,15 @@ public class Upload extends AppCompatActivity {
                 storage = FirebaseStorage.getInstance();
                 storageReference = storage.getReference().child("image").child(user.getUid()).child(kost.getKey()).child("cover");
                 for(uploadcount=0;uploadcount<ImageList.size();uploadcount++){
-                    Uri oneImage=ImageList.get(uploadcount);
-                    final StorageReference imageName=storageReference.child("imageBangunan" + uploadcount);
+                    Uri oneImage = ImageList.get(uploadcount);
+                    final StorageReference imageName = storageReference.child("imageBangunan" + uploadcount);
                     imageName.putFile(oneImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             imageName.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
-                                    String Url =String.valueOf(uri);
+                                    String Url = String.valueOf(uri);
                                     String folder = "cover";
                                     StoreLink(Url,folder);
                                 }
@@ -237,7 +237,7 @@ public class Upload extends AppCompatActivity {
                             imageName.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
-                                    String Url =String.valueOf(uri);
+                                    String Url = String.valueOf(uri);
                                     String folder = "kamarmandi";
                                     StoreLink(Url,folder);
                                 }
@@ -254,6 +254,7 @@ public class Upload extends AppCompatActivity {
             }
         });
     }
+
     private void StoreLink(String Url,String folder){
         HashMap<String,String> imag = new HashMap<>();
         imag.put("imglink",Url);
@@ -267,6 +268,7 @@ public class Upload extends AppCompatActivity {
         ImageList.clear();
         progressBar.setVisibility(View.INVISIBLE);
     }
+
     private void kelar(){
         btnselesai.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -282,8 +284,14 @@ public class Upload extends AppCompatActivity {
         super.onActivityResult(requestCode,resultCode,data);
         if(requestCode == SINGLE_IMAGE && resultCode == RESULT_OK && data != null && data.getData()!= null){
             ImageUri = data.getData();
-            String test = ImageUri.toString();
+            String test = ImageUri.getPath().toString();
             ImageList.add(ImageUri);
+
+//            ImageView coverImage = findViewById(R.id.coverImage);
+//            coverImage.setImageBitmap(BitmapFactory.decodeFile(test ));
+//
+//            btncover.setVisibility(View.GONE);
+
             Toast.makeText(this,test,Toast.LENGTH_LONG).show();
         }
         else if(requestCode == MULTIPLE_IMAGE && resultCode == RESULT_OK && data!=null && data.getClipData()!= null){
