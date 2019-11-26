@@ -33,15 +33,33 @@
                 android:orientation="vertical"
                 android:weightSum="1">
 
-                <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_weight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@mipmap/cecilia2"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginBottom="60dp">
-                </ImageView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="210dp"
+                    android:orientation="vertical">
+
+                    <androidx.core.widget.ContentLoadingProgressBar
+                        android:id="@+id/imgLoading"
+                        style="@style/Widget.AppCompat.ProgressBar"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:indeterminate="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginBottom="60dp"
+                        android:visibility="gone"/>
+
+                    <ImageView
+                        android:id="@+id/profilePic"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginBottom="60dp"
+                        android:visibility="visible"
+                        android:src="@mipmap/cecilia2"/>
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -117,8 +135,6 @@
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp">
 
-
-
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textInputLayoutEmail"
                         android:layout_width="match_parent"
@@ -187,24 +203,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginTop="10dp"
-            android:gravity="top">
-
-            <ProgressBar
-                android:id="@+id/progressBar1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                android:indeterminate="true"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
             android:gravity="bottom">
 
 
@@ -221,12 +219,8 @@
                 android:clickable="true">
             </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
-
         </LinearLayout>
 
-
     </RelativeLayout>
-
-
 
 </androidx.appcompat.widget.LinearLayoutCompat>

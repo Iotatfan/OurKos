@@ -36,7 +36,7 @@ public class Upload extends AppCompatActivity {
     private ProgressBar progressBar;
     private FirebaseStorage storage;
     private final int MULTIPLE_IMAGE = 1;
-    private final int SINGLE_IMAGE=2;
+    private final int SINGLE_IMAGE = 2;
     private Uri ImageUri;
     private StorageReference storageReference;
     ArrayList<Uri> ImageList = new ArrayList<Uri>();
@@ -164,11 +164,11 @@ public class Upload extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
-                storage=FirebaseStorage.getInstance();
-                storageReference=storage.getReference().child("image").child(user.getUid()).child(kost.getKey()).child("bangunan");
+                storage = FirebaseStorage.getInstance();
+                storageReference = storage.getReference().child("image").child(user.getUid()).child(kost.getKey()).child("bangunan");
                 for(uploadcount=0;uploadcount<ImageList.size();uploadcount++){
                     Uri oneImage=ImageList.get(uploadcount);
-                    final StorageReference imageName=storageReference.child("imageBangunan" + uploadcount);
+                    final StorageReference imageName = storageReference.child("imageBangunan" + uploadcount);
                     imageName.putFile(oneImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -195,11 +195,11 @@ public class Upload extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
-                storage=FirebaseStorage.getInstance();
-                storageReference=storage.getReference().child("image").child(user.getUid()).child(kost.getKey()).child("kamar");
+                storage = FirebaseStorage.getInstance();
+                storageReference = storage.getReference().child("image").child(user.getUid()).child(kost.getKey()).child("kamar");
                 for(uploadcount=0;uploadcount<ImageList.size();uploadcount++){
                     Uri oneImage=ImageList.get(uploadcount);
-                    final StorageReference imageName=storageReference.child("imageKamar" + uploadcount);
+                    final StorageReference imageName = storageReference.child("imageKamar" + uploadcount);
                     imageName.putFile(oneImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -226,11 +226,11 @@ public class Upload extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
-                storage=FirebaseStorage.getInstance();
-                storageReference=storage.getReference().child("image").child(user.getUid()).child(kost.getKey()).child("kamarmandi");
+                storage = FirebaseStorage.getInstance();
+                storageReference = storage.getReference().child("image").child(user.getUid()).child(kost.getKey()).child("kamarmandi");
                 for(uploadcount=0;uploadcount<ImageList.size();uploadcount++){
                     Uri oneImage=ImageList.get(uploadcount);
-                    final StorageReference imageName=storageReference.child("imageKamarmandi" + uploadcount);
+                    final StorageReference imageName = storageReference.child("imageKamarmandi" + uploadcount);
                     imageName.putFile(oneImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -284,7 +284,7 @@ public class Upload extends AppCompatActivity {
         super.onActivityResult(requestCode,resultCode,data);
         if(requestCode == SINGLE_IMAGE && resultCode == RESULT_OK && data != null && data.getData()!= null){
             ImageUri = data.getData();
-            String test = ImageUri.getPath().toString();
+//            String test = ImageUri.getPath();
             ImageList.add(ImageUri);
 
 //            ImageView coverImage = findViewById(R.id.coverImage);
@@ -292,7 +292,7 @@ public class Upload extends AppCompatActivity {
 //
 //            btncover.setVisibility(View.GONE);
 
-            Toast.makeText(this,test,Toast.LENGTH_LONG).show();
+//            Toast.makeText(this,test,Toast.LENGTH_LONG).show();
         }
         else if(requestCode == MULTIPLE_IMAGE && resultCode == RESULT_OK && data!=null && data.getClipData()!= null){
             int count = data.getClipData().getItemCount();

@@ -41,7 +41,7 @@ public class SettingsFragment extends Fragment {
     private ImageView imagePemilik;
     private View vPemilk, vLoading;
     private ProgressBar loadingPrgress;
-    String username, gender, phone;
+    String username, gender, phone, img;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -81,6 +81,7 @@ public class SettingsFragment extends Fragment {
                 username = dataSnapshot.child("username").getValue().toString();
                 gender = dataSnapshot.child("gender").getValue().toString();
                 phone = dataSnapshot.child("phone").getValue().toString();
+                img = dataSnapshot.child("profilePic").child("imglink").getValue().toString();
 
                 if(type.equals("Pemilik Kos")){
                     pemilikBtn.setVisibility(View.VISIBLE);
@@ -106,7 +107,6 @@ public class SettingsFragment extends Fragment {
                 Toast.makeText(getActivity().getApplicationContext(), databaseError.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-
     }
 
     private void initLogout(View rootView) {
@@ -129,9 +129,10 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent profile = new Intent(getActivity(), ProfileActivity.class);
-                profile.putExtra("username", username);
-                profile.putExtra("gender", gender);
-                profile.putExtra("phone", phone);
+//                profile.putExtra("username", username);
+//                profile.putExtra("gender", gender);
+//                profile.putExtra("phone", phone);
+//                profile.putExtra("img_url", img);
                 startActivity(profile);
             }
         });
