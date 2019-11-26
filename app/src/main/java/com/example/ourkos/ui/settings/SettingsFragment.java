@@ -77,11 +77,11 @@ public class SettingsFragment extends Fragment {
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String type = dataSnapshot.child("type").getValue().toString();
+                 String type = dataSnapshot.child("type").getValue().toString();
                 username = dataSnapshot.child("username").getValue().toString();
                 gender = dataSnapshot.child("gender").getValue().toString();
-                phone = dataSnapshot.child("phone").getValue().toString();
-                img = dataSnapshot.child("profilePic").child("imglink").getValue().toString();
+//                phone = dataSnapshot.child("phone").getValue().toString();
+//                img = dataSnapshot.child("profilePic").child("imglink").getValue().toString();
 
                 if(type.equals("Pemilik Kos")){
                     pemilikBtn.setVisibility(View.VISIBLE);

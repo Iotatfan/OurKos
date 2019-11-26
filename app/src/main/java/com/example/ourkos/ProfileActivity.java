@@ -110,15 +110,14 @@ public class ProfileActivity extends AppCompatActivity {
                 String username = dataSnapshot.child("username").getValue().toString();
                 String gender = dataSnapshot.child("gender").getValue().toString();
                 String phone = dataSnapshot.child("phone").getValue().toString();
-                String img = dataSnapshot.child("profilePic").child("imglink").getValue().toString();
+                if(dataSnapshot.hasChild("profilePic")) {
+                    String img = dataSnapshot.child("profilePic").child("imglink").getValue().toString();
+                    Glide.with(ProfileActivity.this).load(img).into(imageViewProfile);
+                }
 
                 editTextUsername.setText(username, EditText.BufferType.EDITABLE);
                 appCompatTextViewJK.setText(gender);
                 appCompatTextViewPhone.setText(phone);
-                if(!img.isEmpty()) {
-                    Glide.with(ProfileActivity.this).load(img).into(imageViewProfile);
-//                    imageViewProfile.setImageURI();
-                }
 
                 mLoading.setVisibility(View.GONE);
                 imageViewProfile.setVisibility(View.VISIBLE);
