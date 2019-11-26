@@ -1,13 +1,17 @@
 package com.example.ourkos;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.bumptech.glide.Glide;
+
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -27,15 +31,17 @@ public class KostAdapter extends RecyclerView.Adapter<KostAdapter.ViewHolder> {
         public TextView txtstock;
         public TextView txtjenis;
         public ImageView imgfoto;
+        public LinearLayout parentLayout;
 
         public ViewHolder(View v){
             super(v);
-            txtnama=(TextView)v.findViewById(R.id.namakost);
-            txtalamat=(TextView)v.findViewById(R.id.alamatkost);
-            txtharga=(TextView)v.findViewById(R.id.hargakost);
-            txtstock=(TextView)v.findViewById(R.id.stockkost);
-            txtjenis=(TextView)v.findViewById(R.id.jeniskost);
-            imgfoto=(ImageView)v.findViewById(R.id.foto);
+            txtnama = v.findViewById(R.id.namakost);
+            txtalamat = v.findViewById(R.id.alamatkost);
+            txtharga = v.findViewById(R.id.hargakost);
+            txtstock = v.findViewById(R.id.stockkost);
+            txtjenis = v.findViewById(R.id.jeniskost);
+            imgfoto = v.findViewById(R.id.foto);
+            parentLayout = v.findViewById(R.id.parentLayout);
         }
     }
     @Override
@@ -48,7 +54,7 @@ public class KostAdapter extends RecyclerView.Adapter<KostAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         // - mengambil elemen dari dataset (ArrayList) pada posisi tertentu
         // - mengeset isi view dengan elemen dari dataset tersebut
         holder.txtnama.setText(data.get(position).getNamaKost());
@@ -57,6 +63,23 @@ public class KostAdapter extends RecyclerView.Adapter<KostAdapter.ViewHolder> {
         holder.txtharga.setText("Rp. " + data.get(position).getHargabulanan());
         holder.txtjenis.setText(data.get(position).getJenis());
         Glide.with(context).load(img.get(position)).into(holder.imgfoto);
+
+        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, KosActivity.class);
+                intent.putExtra("image_url", img.get(position));
+                intent.putExtra("name", data.get(position).getNamaKost());
+                intent.putExtra("hargaHarian", data.get(position).getHargaharian());
+                intent.putExtra("hargaMingguan", data.get(position).getHargamingguan());
+                intent.putExtra("hargaBulanan", data.get(position).getHargabulanan());
+                intent.putExtra("hargaTahunan", data.get(position).getHargatahunan());
+                intent.putExtra("stokKamar", data.get(position).getStock());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override

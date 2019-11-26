@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -17,10 +18,12 @@ import java.util.Locale;
 
 public class KosActivity extends AppCompatActivity {
 
-    private TextView textViewhargaHarian, textViewhargaBulanan, textViewhargaTahunan, textViewluasKamar;
+    private TextView textViewhargaHarian,textViewhargaMingguan, textViewhargaBulanan,
+            textViewhargaTahunan, textViewStokKamar;
     private AppCompatTextView textViewNama;
-    private ImageView yesListrik, yesAir, yesAC, yesWifi, yesKasur, yesDalam;
-    private ImageView noListrik, noAir, noAc, noWifi, noKasur, noDalam;
+    private ImageView yesListrik, yesAir, yesAC, yesWifi, yesKasur, yesDalam,
+            noListrik, noAir, noAc, noWifi, noKasur, noDalam,
+            kosImages;
     private FloatingActionButton fabSewa;
     private DatabaseReference mDatabase;
 
@@ -37,8 +40,10 @@ public class KosActivity extends AppCompatActivity {
 
         textViewNama = findViewById(R.id.namaKos);
         textViewhargaHarian = findViewById(R.id.harga_harian);
+        textViewhargaMingguan = findViewById(R.id.harga_mingguan);
         textViewhargaBulanan = findViewById(R.id.harga_bulanan);
         textViewhargaTahunan = findViewById(R.id.harga_tahunan);
+        textViewStokKamar = findViewById(R.id.kamarKosong);
 
         yesAC = findViewById(R.id.okAC);
         yesAir = findViewById(R.id.okAir);
@@ -54,6 +59,8 @@ public class KosActivity extends AppCompatActivity {
         noDalam = findViewById(R.id.noToilet);
         noWifi = findViewById(R.id.noWifi);
 
+        kosImages = findViewById(R.id.images);
+
         fabSewa = findViewById(R.id.fabSewa);
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("kos");
@@ -66,15 +73,21 @@ public class KosActivity extends AppCompatActivity {
 
         Intent kos = getIntent();
         String namaKos = kos.getStringExtra("name");
+        String imageURL = kos.getStringExtra("image_url");
         int hargaHarian = kos.getIntExtra("hargaHarian", 0);
         int hargaMingguan = kos.getIntExtra("hargaMingguan", 0);
         int hargaBulanan = kos.getIntExtra("hargaBulanan", 0);
         int hargaTahunan = kos.getIntExtra("hargaTahunan", 0);
+        int stokKamar = kos.getIntExtra("stokKamar", 0);
 
         textViewNama.setText(namaKos);
         textViewhargaHarian.setText(formatRupiah.format( hargaHarian ));
+        textViewhargaMingguan.setText(formatRupiah.format( hargaMingguan ));
         textViewhargaBulanan.setText(formatRupiah.format( hargaBulanan ));
         textViewhargaTahunan.setText(formatRupiah.format( hargaTahunan ));
+        textViewStokKamar.setText( Integer.toString(stokKamar) );
+        Glide.with(this).load(imageURL).into(kosImages);
+
     }
 
 }
