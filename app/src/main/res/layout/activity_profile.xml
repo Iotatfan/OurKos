@@ -77,7 +77,6 @@
                         android:textColor="@color/pureBlack">
                     </androidx.appcompat.widget.AppCompatTextView>
 
-
                         <EditText
                             android:id="@+id/editTextUsername"
                             android:layout_width="match_parent"
@@ -88,7 +87,6 @@
                             android:textSize="22dp"
                             android:inputType="textEmailAddress">
                         </EditText>
-
 
                 </LinearLayout>
 
