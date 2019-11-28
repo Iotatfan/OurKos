@@ -32,7 +32,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginLeft="18dp">
 
             <TextView
                 android:id="@+id/namak"
@@ -47,6 +48,7 @@
                 android:id="@+id/regiotKos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="ini region"
                 android:textSize="24sp"
                 android:textStyle="normal"
                 android:textColor="@color/pureBlack"/>
@@ -55,6 +57,7 @@
                 android:id="@+id/alamatKos"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:text="ini alamat"
                 android:textSize="24sp"
                 android:textStyle="normal"
                 android:textColor="@color/pureBlack"/>

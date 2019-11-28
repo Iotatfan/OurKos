@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/pureWhite"
+    >
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/bg_color"
+        app:title="Fasilitas Yang Disediakan"
+        app:titleTextColor="@color/pureWhite"
+        android:layout_marginBottom="32dp">
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Listrik"
+            android:textSize="24sp"
+            android:textColor="@color/pureBlack"
+            android:layout_marginStart="20dp"
+            android:layout_weight="0.9"/>
+
+        <CheckBox
+            android:id="@+id/checkboxListrik"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:onClick="onCheckboxClicked"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="AC"
+            android:textSize="24sp"
+            android:textColor="@color/pureBlack"
+            android:layout_marginStart="20dp"
+            android:layout_weight="0.9"/>
+
+        <CheckBox
+            android:id="@+id/checkboxAC"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:onClick="onCheckboxClicked"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Air"
+            android:textSize="24sp"
+            android:textColor="@color/pureBlack"
+            android:layout_marginStart="20dp"
+            android:layout_weight="0.9"/>
+
+        <CheckBox
+            android:id="@+id/checkboxAir"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:onClick="onCheckboxClicked"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Kasur"
+            android:textSize="24sp"
+            android:textColor="@color/pureBlack"
+            android:layout_marginStart="20dp"
+            android:layout_weight="0.9"/>
+
+        <CheckBox
+            android:id="@+id/checkboxKasur"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:onClick="onCheckboxClicked"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Wifi"
+            android:textSize="24sp"
+            android:textColor="@color/pureBlack"
+            android:layout_marginStart="20dp"
+            android:layout_weight="0.9"/>
+
+        <CheckBox
+            android:id="@+id/checkboxWifi"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:onClick="onCheckboxClicked"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Kamar Mandi Dalam"
+            android:textSize="24sp"
+            android:textColor="@color/pureBlack"
+            android:layout_marginStart="20dp"
+            android:layout_weight="0.9"/>
+
+        <CheckBox
+            android:id="@+id/checkboxKamarMandiDalam"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:onClick="onCheckboxClicked"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        android:layout_margin="23dp">
+
+        <Button
+            android:id="@+id/btn_lanjut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ripple_button"
+            android:textColor="@color/pureWhite"
+            android:text="Selanjutnya" />
+
+    </LinearLayout>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

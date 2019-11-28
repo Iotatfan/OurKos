@@ -20,7 +20,7 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
     private ArrayList<String> img;
     private Context context;
 
-    public OwnerAdapter(Context context, ArrayList<Kost> input,ArrayList<String> imag){
+    public OwnerAdapter(Context context, ArrayList<Kost> input, ArrayList<String> imag){
         this.data = input;
         this.img = imag;
         this.context = context;
@@ -56,7 +56,11 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
         holder.txtnama.setText(data.get(position).getNamaKost());
         holder.alamaat.setText(data.get(position).getAlamat());
         holder.region.setText(data.get(position).getRegion());
-        Glide.with(context).load(img.get(position)).into(holder.imgfoto);
+        if(position < img.size()) {
+//            System.out.println(position);
+//            System.out.println(img.size());
+            Glide.with(context).load(img.get(position)).into(holder.imgfoto);
+        }
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +73,12 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
                 intent.putExtra("hargaBulanan", data.get(position).getHargabulanan());
                 intent.putExtra("hargaTahunan", data.get(position).getHargatahunan());
                 intent.putExtra("stokKamar", data.get(position).getStock());
+                intent.putExtra("ac", data.get(position).getHasAC());
+                intent.putExtra("wifi", data.get(position).getHasListrik());
+                intent.putExtra("listrik", data.get(position).getHasListrik());
+                intent.putExtra("air", data.get(position).getHasAir());
+                intent.putExtra("kamarMandiDalam", data.get(position).getHasKamarMandiDalam());
+                intent.putExtra("kasur", data.get(position).getHasKasur());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }

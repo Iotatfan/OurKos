@@ -36,14 +36,14 @@ public class FirebaseDBCreateKostActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         initViews();
         progressBar.setVisibility(View.INVISIBLE);
-        registerKost();
+        next();
     }
 
     private void initViews(){
         String[] SPINNER_JENIS = {"Putra","Putri","Campur"};
         String[] SPINNER_REGION= {"Bandung","Jakarta","Malang","Semarang","Solo","Surabaya","Yogyakarta"};
-        spinnerJenis=findViewById(R.id.material_spinner3);
-        spinnerRegion=findViewById(R.id.material_spinner4);
+        spinnerJenis = findViewById(R.id.material_spinner3);
+        spinnerRegion = findViewById(R.id.material_spinner4);
         ArrayAdapter<String> adapterJenis = new ArrayAdapter<>(FirebaseDBCreateKostActivity.this,R.layout.support_simple_spinner_dropdown_item,SPINNER_JENIS);
         ArrayAdapter<String> adapterRegion = new ArrayAdapter<>(FirebaseDBCreateKostActivity.this,R.layout.support_simple_spinner_dropdown_item,SPINNER_REGION);
         auth = FirebaseAuth.getInstance();
@@ -71,7 +71,7 @@ public class FirebaseDBCreateKostActivity extends AppCompatActivity {
         spinnerJenis.setAdapter(adapterJenis);
         spinnerRegion.setAdapter(adapterRegion);
     }
-    private void registerKost(){
+    private void next(){
         lanjutbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,10 +82,10 @@ public class FirebaseDBCreateKostActivity extends AppCompatActivity {
                 String jenis = spinnerJenis.getText().toString();
                 String region = spinnerRegion.getText().toString();
                 String haris = edtHargaH.getText().toString().replaceAll("[^0-9]", "");
-                String minggus = (edtHargaM.getText().toString()).replaceAll("[^0-9]", "");
-                String bulans = (edtHargaB.getText().toString()).replaceAll("[^0-9]", "");
-                String tahuns = (edtHargaT.getText().toString()).replaceAll("[^0-9]", "");
-                System.out.println(haris);
+                String minggus = edtHargaM.getText().toString().replaceAll("[^0-9]", "");
+                String bulans = edtHargaB.getText().toString().replaceAll("[^0-9]", "");
+                String tahuns = edtHargaT.getText().toString().replaceAll("[^0-9]", "");
+//                System.out.println(haris);
                 String stocks = (edtStock.getText().toString());
 
                 if(nama.isEmpty()){
@@ -122,8 +122,19 @@ public class FirebaseDBCreateKostActivity extends AppCompatActivity {
                     tahun = Integer.parseInt(tahuns);
                     stock = Integer.parseInt(stocks);
                     progressBar.setVisibility(View.VISIBLE);
-                    writeToDB(nama,alamat,jenis,region,hari,minggu,bulan,tahun,stock);
-                    Intent intent = new Intent(FirebaseDBCreateKostActivity.this,Upload.class);
+//                    writeToDB(nama, alamat, jenis, region, hari, minggu, bulan, tahun, stock);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("namaKos", nama);
+                    bundle.putString("alamatKos", alamat);
+                    bundle.putString("jenisKos", jenis);
+                    bundle.putString("region", region);
+                    bundle.putInt("hargaHarian", hari);
+                    bundle.putInt("hargaMingguan", minggu);
+                    bundle.putInt("hargaBulanan", bulan);
+                    bundle.putInt("hargaTahunan", tahun);
+                    bundle.putInt("kamarKosong", stock);
+                    Intent intent = new Intent(FirebaseDBCreateKostActivity.this, FacilityActivity.class);
+                    intent.putExtras(bundle);
                     startActivity(intent);
                     finish();
                 }
@@ -131,10 +142,10 @@ public class FirebaseDBCreateKostActivity extends AppCompatActivity {
         });
     }
 
-    private void writeToDB(String nama, String alamat, String jenis,String region,int hari,int minggu, int bulan,int tahun,int stock){
-        Kost kost = new Kost(nama,alamat,stock,bulan,hari,minggu,tahun,region,jenis);
-        String key = database.child("kost").child(user.getUid()).child("detail").push().getKey();
-        kost.setKey(key);
-        database.child("kost").child(user.getUid()).child("detail").push().setValue(kost);
-    }
+//    private void writeToDB(String nama, String alamat, String jenis,String region,int hari,int minggu, int bulan,int tahun,int stock){
+//        Kost kost = new Kost(nama,alamat,stock,bulan,hari,minggu,tahun,region,jenis);
+//        String key = database.child("kost").child(user.getUid()).child("detail").push().getKey();
+//        kost.setKey(key);
+//        database.child("kost").child(user.getUid()).child("detail").push().setValue(kost);
+//    }
 }

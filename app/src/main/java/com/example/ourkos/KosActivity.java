@@ -2,6 +2,7 @@ package com.example.ourkos;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -79,6 +80,12 @@ public class KosActivity extends AppCompatActivity {
         int hargaBulanan = kos.getIntExtra("hargaBulanan", 0);
         int hargaTahunan = kos.getIntExtra("hargaTahunan", 0);
         int stokKamar = kos.getIntExtra("stokKamar", 0);
+        int ac = kos.getIntExtra("ac", 0);
+        int wifi = kos.getIntExtra("wifi", 0);
+        int listrik = kos.getIntExtra("listrik", 0);
+        int air = kos.getIntExtra("air", 0);
+        int dalam = kos.getIntExtra("kamarMandiDalam", 0);
+        int kasur = kos.getIntExtra("kasur", 0);
 
         textViewNama.setText(namaKos);
         textViewhargaHarian.setText(formatRupiah.format( hargaHarian ));
@@ -87,6 +94,33 @@ public class KosActivity extends AppCompatActivity {
         textViewhargaTahunan.setText(formatRupiah.format( hargaTahunan ));
         textViewStokKamar.setText( Integer.toString(stokKamar) );
         Glide.with(this).load(imageURL).into(kosImages);
+
+        System.out.println("kasur"+kasur);
+
+        if( ac == 1 ) {
+            yesAC.setVisibility(View.VISIBLE);
+            noAc.setVisibility(View.GONE);
+        }
+        if ( wifi == 1 ) {
+            yesWifi.setVisibility(View.VISIBLE);
+            noWifi.setVisibility(View.GONE);
+        }
+        if( listrik == 1 ) {
+            yesListrik.setVisibility(View.VISIBLE);
+            noListrik.setVisibility(View.GONE);
+        }
+        if ( air == 1 ) {
+            yesAir.setVisibility(View.VISIBLE);
+            noAir.setVisibility(View.GONE);
+        }
+        if( dalam == 1 ) {
+            yesDalam.setVisibility(View.VISIBLE);
+            noDalam.setVisibility(View.GONE);
+        }
+        if ( kasur == 1 ) {
+            yesKasur.setVisibility(View.VISIBLE);
+            noKasur.setVisibility(View.GONE);
+        }
 
     }
 

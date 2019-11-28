@@ -50,10 +50,10 @@ public class SearchListActivity extends AppCompatActivity {
         getData();
     }
     private void initview(){
-        listView=(RecyclerView) findViewById(R.id.listV);
-        listKost=new ArrayList<Kost>();
-        imageKost=new ArrayList<>();
-        region=new ArrayList<>();
+        listView = (RecyclerView) findViewById(R.id.listV);
+        listKost = new ArrayList<Kost>();
+        imageKost = new ArrayList<>();
+        region = new ArrayList<>();
         kost = new Kost();
         database = FirebaseDatabase.getInstance().getReference();
         empty = findViewById(R.id.empty_view);
@@ -83,8 +83,8 @@ public class SearchListActivity extends AppCompatActivity {
                         }
                     }
                 }
-                int size =listKost.size();
-                List<Kost> temp=listKost;
+                int size = listKost.size();
+                List<Kost> temp = listKost;
                 int j =0;
                 for(int i=0;i<size;i++){
                     String k=listKost.get(j).getRegion();

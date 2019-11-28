@@ -4,10 +4,10 @@
     android:id="@+id/cv_main"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
-    card_view:cardBackgroundColor="@color/pureWhite"
-    card_view:cardCornerRadius="3dp"
-    card_view:cardElevation="2.5dp">
+    android:layout_margin="8dp"
+    card_view:cardBackgroundColor="@color/cardViewColor"
+    card_view:cardCornerRadius="8dp"
+    card_view:cardElevation="3dp">
 
     <LinearLayout
         android:id="@+id/parentLayout"
@@ -23,6 +23,7 @@
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_gravity="left"
+            android:layout_marginRight="16dp"
             android:contentDescription="@string/app_name" />
 
         <LinearLayout
@@ -33,6 +34,7 @@
             <TextView
                 android:id="@+id/namakost"
                 android:layout_width="fill_parent"
+                android:text="ini nama kost"
                 android:layout_height="wrap_content"
                 android:textColor="@color/pureBlack"
                 android:textStyle="bold"/>
@@ -41,24 +43,28 @@
                 android:id="@+id/alamatkost"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:text="ini alamat"
                 android:textColor="@color/pureBlack"/>
 
             <TextView
                 android:id="@+id/hargakost"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:text="ini harga"
                 android:textColor="@color/pureBlack"/>
 
             <TextView
                 android:id="@+id/stockkost"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:text="ini stock"
                 android:textColor="@color/pureBlack"/>
 
             <TextView
                 android:id="@+id/jeniskost"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:text="ini jenis"
                 android:textColor="@color/pureBlack"/>
 
             </LinearLayout>

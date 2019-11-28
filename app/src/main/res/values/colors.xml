@@ -8,4 +8,5 @@
     <color name="pureBlack">#EE000000</color>
     <color name="pureWhite">#FFFFFFFF</color>
     <color name="shadow">#AA667766</color>
+    <color name="cardViewColor">#EEEEEE</color>
 </resources>

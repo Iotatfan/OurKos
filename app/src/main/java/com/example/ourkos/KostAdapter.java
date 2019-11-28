@@ -75,6 +75,13 @@ public class KostAdapter extends RecyclerView.Adapter<KostAdapter.ViewHolder> {
                 intent.putExtra("hargaBulanan", data.get(position).getHargabulanan());
                 intent.putExtra("hargaTahunan", data.get(position).getHargatahunan());
                 intent.putExtra("stokKamar", data.get(position).getStock());
+                intent.putExtra("ac", data.get(position).getHasAC());
+                intent.putExtra("wifi", data.get(position).getHasListrik());
+                intent.putExtra("listrik", data.get(position).getHasListrik());
+                intent.putExtra("air", data.get(position).getHasAir());
+                intent.putExtra("kamarMandiDalam", data.get(position).getHasKamarMandiDalam());
+                intent.putExtra("kasur", data.get(position).getHasKasur());
+
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }
