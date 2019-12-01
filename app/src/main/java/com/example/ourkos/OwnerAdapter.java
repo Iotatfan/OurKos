@@ -2,6 +2,7 @@ package com.example.ourkos;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +58,7 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
         holder.alamaat.setText(data.get(position).getAlamat());
         holder.region.setText(data.get(position).getRegion());
         if(position < img.size()) {
+            Log.d("IMAGE",String.valueOf(img.size()));
 //            System.out.println(position);
 //            System.out.println(img.size());
             Glide.with(context).load(img.get(position)).into(holder.imgfoto);
@@ -67,6 +69,7 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
             public void onClick(View v) {
                 Intent intent = new Intent(context, KosActivity.class);
                 intent.putExtra("image_url", img.get(position));
+                intent.putExtra("key",data.get(position).getKey());
                 intent.putExtra("name", data.get(position).getNamaKost());
                 intent.putExtra("hargaHarian", data.get(position).getHargaharian());
                 intent.putExtra("hargaMingguan", data.get(position).getHargamingguan());

@@ -2,6 +2,7 @@ package com.example.ourkos;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,6 +63,7 @@ public class KostAdapter extends RecyclerView.Adapter<KostAdapter.ViewHolder> {
         holder.txtstock.setText("Ruangan tersisa : " + data.get(position).getStock());
         holder.txtharga.setText("Rp. " + data.get(position).getHargabulanan());
         holder.txtjenis.setText(data.get(position).getJenis());
+        Log.d("IMAGE",String.valueOf(position));
         Glide.with(context).load(img.get(position)).into(holder.imgfoto);
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +71,7 @@ public class KostAdapter extends RecyclerView.Adapter<KostAdapter.ViewHolder> {
             public void onClick(View v) {
                 Intent intent = new Intent(context, KosActivity.class);
                 intent.putExtra("image_url", img.get(position));
+                intent.putExtra("key",data.get(position).getKey());
                 intent.putExtra("name", data.get(position).getNamaKost());
                 intent.putExtra("hargaHarian", data.get(position).getHargaharian());
                 intent.putExtra("hargaMingguan", data.get(position).getHargamingguan());

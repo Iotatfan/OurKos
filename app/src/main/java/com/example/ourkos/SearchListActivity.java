@@ -2,7 +2,6 @@ package com.example.ourkos;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -84,15 +83,14 @@ public class SearchListActivity extends AppCompatActivity {
                     }
                 }
                 int size = listKost.size();
-                List<Kost> temp = listKost;
                 int j =0;
                 for(int i=0;i<size;i++){
                     String k=listKost.get(j).getRegion();
-                    Log.d("Jumlah",String.valueOf(j));
-                    Log.d("KOST",listKost.toString());
+//                    Log.d("Jumlah",String.valueOf(j));
+//                    Log.d("KOST",listKost.toString());
                     region.add(k);
-                    Log.d("REGION",region.toString());
-                    Log.d("NAME",name);
+//                    Log.d("REGION",region.toString());
+//                    Log.d("NAME",name);
                     if(!region.get(j).equals(name)){
                         listKost.remove(j);
                         imageKost.remove(j);

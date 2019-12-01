@@ -129,7 +129,7 @@ public class FacilityActivity extends AppCompatActivity {
                 listrik, air, kamarMandiDalam, kasur);
         String key = mDatabase.child("kost").child(user.getUid()).child("detail").push().getKey();
         kost.setKey(key);
-        mDatabase.child("kost").child(user.getUid()).child("detail").push().setValue(kost);
+        mDatabase.child("kost").child(user.getUid()).child("detail").child(key).setValue(kost);
     }
 
 }
